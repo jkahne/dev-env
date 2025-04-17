@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo "[start]: FORK"
+# used by Fork for commandline integrations
+pushd "/usr/local"
+[ ! -d /usr/local/bin ] && sudo mkdir -p /usr/local/bin
+popd
+
+echo "[end]: FORK"

@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+
+echo "[start]: homebrew"
+if ! command -v brew &> /dev/null
+then
+    echo "Homebrew is not installed. Installing now..."
+    # Install Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    echo "Homebrew is already installed."
+fi
+
+brew reinstall tmux
+
+for pkg in gpg gawk autojump coreutils automake autoconf libyaml readline libxslt libtool openssl@3 fop wxwidgets tree vlc 1password-cli pngpaste lazygit btop broot libpq docker; do
+    brew reinstall "$pkg"
+done
+
+brew reinstall wget
+brew reinstall eza
+brew reinstall bat
+brew reinstall zsh
+brew reinstall zsh-completions
+brew reinstall git-delta
+brew reinstall --cask keycastr
+brew reinstall --cask stats
+
+
+printf "\nSwitch to brew zsh\n"
+if [ $( cat /etc/shells | grep -E ^$(brew --prefix)/bin/zsh$ ) ]; then
+  echo "zsh already set as default shell"
+else
+ echo $(brew --prefix)/bin/zsh | sudo tee -a /etc/shells
+ chsh -s $(brew --prefix)/bin/zsh
+fi
+
+brew cleanup
+
+echo "[end]: homebrew"
+
