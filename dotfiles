@@ -3,7 +3,7 @@ set -e
 
 echo "[start]: dotfiles"
 
-script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 dry="0"
 
 while [[ $# > 0 ]]; do
@@ -32,49 +32,49 @@ execute() {
 }
 
 copy_dir() {
-    from=$1
-    to=$2
+    from="$1"
+    to="$2"
 
-    execute mkdir -p $to
+    execute mkdir -p "$to"
 
-    pushd $from > /dev/null
+    pushd "$from" > /dev/null
     dirs=$(find . -mindepth 1 -maxdepth 1 -type d)
     for dir in $dirs; do
-      execute rm -rf $to/$dir
-      execute cp -r $dir $to/$dir
+      execute rm -rf "$to/$dir"
+      execute cp -r "$dir" "$to/$dir"
     done
     popd > /dev/null
 }
 
 copy_file() {
-    from=$1
-    to=$2
+    from="$1"
+    to="$2"
 
-    if [ -d $to ]; then
-        name=$(basename $from)
-        execute rm $to/$name
-        execute cp $from $to/$name
+    if [ -d "$to" ]; then
+        name=$(basename "$from")
+        execute rm "$to/$name"
+        execute cp "$from" "$to/$name"
     else
-        if [ -f $to ]; then
-            execute rm $to
+        if [ -f "$to" ]; then
+            execute rm "$to"
         fi
-        execute cp $from $to
+        execute cp "$from" "$to"
     fi
 }
 
 confighome=".config"
+copy_dir "$confighome" "$HOME/$confighome"
 
-copy_dir $confighome $HOME/$confighome
 # can also do this if you don't need to rename the file:
-# copy_file .specialconfig $HOME
-copy_file ./dots/dot-gitconfig $HOME/.gitconfig
-copy_file ./dots/dot-gitignore $HOME/.gitignore
-copy_file ./dots/dot-ideavimrc $HOME/.ideavimrc
-copy_file ./dots/dot-iex.exs $HOME/.iex.exs
-copy_file ./dots/dot-irbrc $HOME/.irbrc
-copy_file ./dots/dot-psqlrc $HOME/.psqlrc
-copy_file ./dots/dot-tmux.conf $HOME/.tmux.conf
-copy_file ./dots/dot-zshrc $HOME/.zshrc
+# copy_file ".specialconfig" "$HOME"
+copy_file "./dots/dot-gitconfig" "$HOME/.gitconfig"
+copy_file "./dots/dot-gitignore" "$HOME/.gitignore"
+copy_file "./dots/dot-ideavimrc" "$HOME/.ideavimrc"
+copy_file "./dots/dot-iex.exs" "$HOME/.iex.exs"
+copy_file "./dots/dot-irbrc" "$HOME/.irbrc"
+copy_file "./dots/dot-psqlrc" "$HOME/.psqlrc"
+copy_file "./dots/dot-tmux.conf" "$HOME/.tmux.conf"
+copy_file "./dots/dot-zshrc" "$HOME/.zshrc"
 
 
 echo "[end]: dotfiles"
