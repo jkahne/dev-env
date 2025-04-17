@@ -1,0 +1,55 @@
+"let mapleader = ','
+"
+"set commentary
+"
+"set incsearch
+"
+"inoremap <leader>, <Esc>
+"vnoremap <leader>, <Esc>
+"inoremap ,, <Esc>
+"vnoremap ,, <Esc>
+"
+"nmap <Leader>rf <Action>(ReformatCode)
+"set clipboard+=unnamed
+
+
+" ‼️‼️‼️‼️ not sure if I need the stuff above or below this line  ‼️‼️‼️
+
+let mapleader = ','
+
+inoremap <leader>, <Esc>
+vnoremap <leader>, <Esc>
+
+set commentary
+
+set incsearch
+
+set hlsearch
+map <leader><Space> :nohlsearch<CR>
+
+nmap <Leader>rf <Action>(ReformatCode)
+set clipboard+=unnamed
+
+map gt :action HideAllWindows<CR>
+map <leader>gt :action SelectInProjectView<CR>
+
+map gr :action GotoDeclaration<CR>
+map <leader>t :action GotoFile<CR>
+map <leader>ef :action FindInPath<CR>
+map <leader>b :action RecentFiles<CR>
+map <S-Tab> :action EditorToggleFold<CR>
+
+# map <leader>s :action AceAction<CR>
+set easymotion
+# g:EasyMotion_re_anywhere = 1
+# map <leader>s :action AceAction<CR>
+
+map <leader>sf :action Run<CR>
+map <leader>ss :action RunContextTest<CR>
+map <leader>ss :action Rerun<CR>
+
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+

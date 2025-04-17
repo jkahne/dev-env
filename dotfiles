@@ -49,16 +49,31 @@ copy_dir() {
 copy_file() {
     from=$1
     to=$2
-    name=$(basename $from)
 
-    execute rm $to/$name
-    execute cp $from $to/$name
+    if [ -d $to ]; then
+        name=$(basename $from)
+        execute rm $to/$name
+        execute cp $from $to/$name
+    else
+        if [ -f $to ]; then
+            execute rm $to
+        fi
+        execute cp $from $to
+    fi
 }
 
 confighome=".test-config"
 
-copy_dir $confighome $HOME/$confighome
-copy_file .specialconfig $HOME
+# copy_dir $confighome $HOME/$confighome
+# copy_file .specialconfig $HOME
+copy_file ./dots/dot-gitconfig $HOME/.gitconfig
+copy_file ./dots/dot-gitignore $HOME/.gitignore
+copy_file ./dots/dot-ideavimrc $HOME/.ideavimrc
+copy_file ./dots/dot-iex.exs $HOME/.iex.exs
+copy_file ./dots/dot-irbrc $HOME/.irbrc
+copy_file ./dots/dot-psqlrc $HOME/.psqlrc
+copy_file ./dots/dot-tmux.conf $HOME/.tmux.conf
+copy_file ./dots/dot-zshrc $HOME/.zshrc
 
 
 echo "[end]: dotfiles"
