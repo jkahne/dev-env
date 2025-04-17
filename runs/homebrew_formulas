@@ -42,8 +42,12 @@ brew install vlc
 brew install wget 
 brew install wxwidgets
 
-brew reinstall --cask keycastr
-brew reinstall --cask stats
+brew install --cask 1password 
+brew install --cask keycastr
+brew install --cask stats
+
+# brew install --cask font-jetbrains-mono-nerd-font
+# brew install --cask font-hack-nerd-font
 
 brew cleanup
 
