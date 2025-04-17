@@ -65,6 +65,7 @@ copy_file() {
 confighome=".config"
 copy_dir "$confighome" "$HOME/$confighome"
 
+copy_dir "./Library/Application Support/" "$HOME/Library/Application Support"
 # can also do this if you don't need to rename the file:
 # copy_file ".specialconfig" "$HOME"
 copy_file "./dots/dot-gitconfig" "$HOME/.gitconfig"

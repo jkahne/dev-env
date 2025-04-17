@@ -1,0 +1,30 @@
+lastupdatecheck: 0
+recentrepos:
+    - /Users/jkahne/dev-env
+    - /Users/jkahne/.dotfiles
+    - /Users/jkahne/projects/jkahne/jkahnecom
+    - /Users/jkahne/projects/jkahne/2025/flow
+    - /Users/jkahne/projects/code-references/jumpstart-pro/jumpstart-pro-rails
+    - /Users/jkahne/projects/jkahne/topaz
+    - /Users/jkahne/projects/37signals/writebook
+    - /Users/jkahne/projects/37signals/campfire
+    - /Users/jkahne/projects/jkahne/2025/topaz
+    - /Users/jkahne/Library/Mobile Documents/com~apple~CloudDocs/dotfilesMk24
+    - /Users/jkahne/projects/jkahne/rails8/topaz
+    - /Users/jkahne/projects/jkahne/topaz248
+    - /Users/jkahne/projects/old/_scripsafe/scripsafe
+    - /Users/jkahne/projects/worknotes
+    - /Users/jkahne/projects/jkahne/topaz24
+startuppopupversion: 5
+lastversion: 0.49.0
+customcommandshistory:
+    - edit
+    - q
+hidecommandlog: false
+ignorewhitespaceindiffview: false
+diffcontextsize: 3
+renamesimilaritythreshold: 50
+localbranchsortorder: recency
+remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always

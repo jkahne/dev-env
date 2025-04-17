@@ -1,0 +1,21 @@
+gui:
+  authorColors:
+    'jkahne': '#ffff00'
+    '*': 'red'
+  theme:
+    selectedLineBgColor:
+      - cyan
+  showRandomTip: false
+  nerdFontsVersion: "2"
+git:
+  merging:
+    args: '--no-ff'
+  autoFetch: false
+keybinding:
+  universal:
+    # quit: <esc>
+    scrollUpMain: <c-k>
+    scrollDownMain: <c-j>
+    commits:
+      moveDownCommit: <c-1>
+      moveUpCommit: <c-2>
