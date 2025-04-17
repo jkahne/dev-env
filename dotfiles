@@ -62,7 +62,7 @@ copy_file() {
     fi
 }
 
-confighome=".config2"
+confighome=".config"
 
 copy_dir $confighome $HOME/$confighome
 # can also do this if you don't need to rename the file:
