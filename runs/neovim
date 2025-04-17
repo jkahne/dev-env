@@ -8,5 +8,4 @@ brew install neovim
 # gem install neovim
 
 
-
 echo "[end]: $(basename "$0")"

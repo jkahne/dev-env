@@ -8,7 +8,6 @@ brew install autoconf
 brew install autojump 
 brew install automake 
 brew install bat 
-brew install broot 
 brew install btop
 brew install coreutils 
 brew install docker

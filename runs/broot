@@ -3,6 +3,7 @@ set -e
 
 echo "[start]: $(basename "$0")"
 
-brew cleanup
+brew install broot 
+broot --print-shell-function zsh
 
 echo "[end]: $(basename "$0")"

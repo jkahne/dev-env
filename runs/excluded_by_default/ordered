@@ -8,9 +8,10 @@ RUNS_DIR="$(dirname "$SCRIPT_DIR")"
 
 "$RUNS_DIR/install_homebrew"
 "$RUNS_DIR/homebrew"
-"$RUNS_DIR/zsh"
-"$RUNS_DIR/asdf_plugins"
-"$RUNS_DIR/neovim"
-"$RUNS_DIR/cleanup"
+"$RUNS_DIR/zsh" # depends on homebrew being installed
+"$RUNS_DIR/broot" # depends on zsh being present
+"$RUNS_DIR/asdf_plugins" # depends on homebrew being installed
+"$RUNS_DIR/neovim" # depends on homebrew being installed
+brew cleanup
 
 echo "[end]: $(basename "$0")"
