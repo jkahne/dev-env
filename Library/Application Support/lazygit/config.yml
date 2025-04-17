@@ -4,9 +4,9 @@ gui:
     '*': 'red'
   theme:
     selectedLineBgColor:
-      - cyan
+      - reverse
   showRandomTip: false
-  nerdFontsVersion: "2"
+  nerdFontsVersion: "3"
 git:
   merging:
     args: '--no-ff'
