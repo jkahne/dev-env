@@ -2,6 +2,9 @@
 put this project in ~/dev-env.
 
 
+optional, but you should: install fonts (mostly the jetbrains one)
+
+
 ## Run
 run `run --dry` to see what it runs by default. 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-echo "[start]: dotfiles"
+echo "[start]: $(basename "$0")"
 
 script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 dry="0"
@@ -78,4 +78,4 @@ copy_file "./dots/dot-tmux.conf" "$HOME/.tmux.conf"
 copy_file "./dots/dot-zshrc" "$HOME/.zshrc"
 
 
-echo "[end]: dotfiles"
+echo "[end]: $(basename "$0")"
