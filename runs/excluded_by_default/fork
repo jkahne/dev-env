@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
+set -e
 
-echo "[start]: FORK"
+echo "[start]: $(basename "$0")"
+
 # used by Fork for commandline integrations
 pushd "/usr/local"
 [ ! -d /usr/local/bin ] && sudo mkdir -p /usr/local/bin
 popd
 
-echo "[end]: FORK"
+echo "[end]: $(basename "$0")"

@@ -3,6 +3,10 @@ set -e
 
 echo "[start]: $(basename "$0")"
 
-echo "hello from test"
+brew install neovim 
+# npm install -g neovim
+# gem install neovim
+
+
 
 echo "[end]: $(basename "$0")"

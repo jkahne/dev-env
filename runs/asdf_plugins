@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -e
+
+echo "[start]: $(basename "$0")"
+
+brew install asdf
+# erlang elixir 
+for plgn in nodejs yarn ruby golang; do
+  if [ $( asdf plugin list | grep -E ^$plgn$ ) ]; then
+    echo "Plugin '$plgn' is already installed. Updating"
+    asdf plugin update $plgn
+  else
+    asdf plugin add $plgn
+    asdf install $plgn latest
+    asdf global $plgn latest
+    asdf reshim $plgn
+  fi
+done
+
+
+echo "[end]: $(basename "$0")"

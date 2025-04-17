@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
 filter=""
@@ -10,7 +12,7 @@ while [[ $# > 0 ]]; do
     echo "ARG: \"$1\""
     if [[ "$1" == "--dry" ]]; then
         dry="1"
-    elif [[ "$1" == "--all" ]]; then
+    elif [[ "$1" == "--extras" ]]; then
         run_all="1"
     else
         filter="$1"
@@ -39,10 +41,10 @@ log "$script_dir -- $filter"
 
 cd $script_dir
 # Get regular scripts
-regular_scripts=$(find ./runs -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print)
+regular_scripts=$(find ./runs -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print | sort)
 
-# Get excluded scripts (only used with --all flag)
-excluded_scripts=$(find ./runs/excluded_by_default -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print 2>/dev/null || echo "")
+# Get excluded scripts (only used with --extras flag)
+excluded_scripts=$(find ./runs/excluded_by_default -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print 2>/dev/null | sort || echo "")
 
 # Determine which scripts to process
 if [[ "$run_all" == "1" ]]; then

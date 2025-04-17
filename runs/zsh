@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -e
+
+echo "[start]: $(basename "$0")"
+
+brew reinstall zsh
+brew reinstall zsh-completions
+
+printf "\nSwitch to brew zsh\n"
+if [ $( cat /etc/shells | grep -E ^$(brew --prefix)/bin/zsh$ ) ]; then
+  echo "zsh already set as default shell"
+else
+ echo $(brew --prefix)/bin/zsh | sudo tee -a /etc/shells
+ chsh -s $(brew --prefix)/bin/zsh
+fi
+
+echo "[end]: $(basename "$0")"
+

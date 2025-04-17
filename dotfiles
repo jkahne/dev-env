@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 
 echo "[start]: dotfiles"
 
@@ -54,9 +55,9 @@ copy_file() {
     execute cp $from $to/$name
 }
 
-top=".test-config"
+confighome=".test-config"
 
-copy_dir $top $HOME/$top
+copy_dir $confighome $HOME/$confighome
 copy_file .specialconfig $HOME
 
 
