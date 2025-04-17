@@ -36,17 +36,19 @@ log() {
 log "RUN: env: $env -- grep: $grep"
 
 # runs_dir=`find $script_dir/runs -mindepth 1 -maxdepth 1 -executable`
-runs_dir=`find $script_dir/runs -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print`
+cd $script_dir
+# runs_dir=`find $script_dir/runs -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print`
+scripts=$(find ./runs -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print)
 
-for s in $runs_dir; do
-    if echo "$s" | grep -vq "$grep"; then
-        log "grep \"$grep\" filtered out $s"
+for script in $scripts; do
+    if echo "$script" | grep -vq "$grep"; then
+        log "grep \"$grep\" filtered out $script"
         continue
     fi
 
-    log "running script: $s"
+    log "running script: $script"
 
     if [[ $dry_run == "0" ]]; then
-        $s
+        $script
     fi
 done
