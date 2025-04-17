@@ -2,38 +2,37 @@
 
 # script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+filter=""
+dry="0"
 
-# if [ -z "$DEV_ENV" ]; then
-#     echo "env var DEV_ENV needs to be present"
-#     exit 1
-# fi
-#
-# # if i just did DEV_ENV=$(pwd) ./run then this is needed for the rest of the
-# # scripts
-# export DEV_ENV="$DEV_ENV"
-
-grep=""
-dry_run="0"
-
-while [[ $# -gt 0 ]]; do
+while [[ $# > 0 ]]; do
     echo "ARG: \"$1\""
     if [[ "$1" == "--dry" ]]; then
-        dry_run="1"
+        dry="1"
     else
-        grep="$1"
+        filter="$1"
     fi
     shift
 done
 
 log() {
-    if [[ $dry_run == "1" ]]; then
-        echo "[DRY_RUN]: $1"
+    if [[ $dry == "1" ]]; then
+        echo "[dry]: $@"
     else
-        echo "$1"
+        echo "$@"
     fi
 }
 
-log "RUN: env: $env -- grep: $grep"
+execute() {
+    if [[ $dry == "1" ]]; then
+      log "[dry]: $@"
+      return
+    fi
+    log "✅: $@"
+    "$@"
+}
+
+log "$script_dir -- $filter"
 
 # runs_dir=`find $script_dir/runs -mindepth 1 -maxdepth 1 -executable`
 cd $script_dir
@@ -41,14 +40,10 @@ cd $script_dir
 scripts=$(find ./runs -mindepth 1 -maxdepth 1 -type f -exec test -x {} \; -print)
 
 for script in $scripts; do
-    if echo "$script" | grep -vq "$grep"; then
-        log "grep \"$grep\" filtered out $script"
+    if echo "$script" | grep -vq "$filter"; then
+        log "❌: $script"
         continue
     fi
 
-    log "running script: $script"
-
-    if [[ $dry_run == "0" ]]; then
-        $script
-    fi
+    execute ./$script
 done
