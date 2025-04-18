@@ -62,8 +62,7 @@ copy_file() {
     fi
 }
 
-confighome=".config"
-copy_dir "$confighome" "$HOME/$confighome"
+copy_dir "config" "$HOME/.config"
 
 copy_dir "./Library/Application Support/" "$HOME/Library/Application Support"
 # can also do this if you don't need to rename the file:
