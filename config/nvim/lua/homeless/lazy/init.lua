@@ -578,7 +578,7 @@ return {
           "javascript",
           "query",
           "ruby",
-          "scss",
+          -- "scss",
           "vim",
           "vimdoc",
           -- "yaml",
