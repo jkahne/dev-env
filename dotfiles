@@ -75,6 +75,7 @@ copy_file "./dots/dot-irbrc" "$HOME/.irbrc"
 copy_file "./dots/dot-psqlrc" "$HOME/.psqlrc"
 copy_file "./dots/dot-tmux.conf" "$HOME/.tmux.conf"
 copy_file "./dots/dot-zshrc" "$HOME/.zshrc"
+copy_file "./dots/dot-default_gems" "$HOME/.default_gems"
 # can also do this if you don't need to rename the file:
 # copy_file ".specialconfig" "$HOME"
 

@@ -566,8 +566,8 @@ return {
         textobjects = {
           swap = {
             enable = true,
-            swap_next = { ["<leader>a"] = "@parameter.inner" },
-            swap_previous = { ["<leader>A"] = "@parameter.inner" },
+            swap_next = { ["<leader>cl"] = "@parameter.inner" },
+            swap_previous = { ["<leader>ch"] = "@parameter.inner" },
           },
         },
         ensure_installed = {

@@ -36,17 +36,17 @@ return {
 
   {
     "okuuva/auto-save.nvim",
-    cmd = "ASToggle", -- optional for lazy loading on command
+    cmd = "ASToggle",                         -- optional for lazy loading on command
     event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
     opts = {
       --
       -- All of these are just the defaults
       --
-      enabled = false, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
-      trigger_events = { -- See :h events
-        immediate_save = { "BufLeave", "FocusLost" }, -- vim events that trigger an immediate save
+      enabled = false,                                 -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
+      trigger_events = {                               -- See :h events
+        immediate_save = { "BufLeave", "FocusLost" },  -- vim events that trigger an immediate save
         defer_save = { "InsertLeave", "TextChanged" }, -- vim events that trigger a deferred save (saves after `debounce_delay`)
-        cancel_deferred_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
+        cancel_deferred_save = { "InsertEnter" },      -- vim events that cancel a pending deferred save
       },
       -- function that takes the buffer handle and determines whether to save the current buffer or not
       -- return true: if buffer is ok to be saved
@@ -64,9 +64,9 @@ return {
         return false
       end,
       write_all_buffers = false, -- write all buffers when the current one meets `condition`
-      noautocmd = false, -- do not execute autocmds when saving
-      lockmarks = false, -- lock marks when saving, see `:h lockmarks` for more details
-      debounce_delay = 1000, -- delay after which a pending save is executed
+      noautocmd = false,         -- do not execute autocmds when saving
+      lockmarks = false,         -- lock marks when saving, see `:h lockmarks` for more details
+      debounce_delay = 1000,     -- delay after which a pending save is executed
       -- log debug messages to 'auto-save.log' file in neovim cache directory, set to `true` to enable
       debug = false,
     },
@@ -121,6 +121,19 @@ return {
       })
     end,
   },
+  -- tidy up spaces at EOL on save
+  {
+    "mcauley-penney/tidy.nvim",
+    opts = {
+      enabled_on_save = true,
+      filetype_exclude = { "markdown", "diff" },
+    },
+    -- init = function()
+    --   vim.keymap.set("n", "<leader>tt", require("tidy").toggle, {})
+    --   vim.keymap.set("n", "<leader>tr", require("tidy").run, {})
+    -- end,
+  },
+
   -- {
   -- 	"folke/noice.nvim",
   -- 	event = "VeryLazy",

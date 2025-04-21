@@ -42,6 +42,7 @@ brew install vlc
 brew install wget 
 brew install wxwidgets
 
+brew install --cask easy-move-plus-resize
 brew install --cask 1password 
 brew install --cask keycastr
 brew install --cask stats
