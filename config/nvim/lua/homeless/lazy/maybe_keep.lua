@@ -1,12 +1,12 @@
 return {
-  {
-    -- eh, this aint' great.  comma-p in neo-tree to preview an image in a new split kinda sucks.
-    "adelarsq/image_preview.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("image_preview").setup({})
-    end,
-  },
+  -- {
+  --   -- eh, this aint' great.  comma-p in neo-tree to preview an image in a new split kinda sucks.
+  --   "adelarsq/image_preview.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("image_preview").setup({})
+  --   end,
+  -- },
   {
     "echasnovski/mini.nvim",
     version = "*",
