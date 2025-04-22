@@ -1,6 +1,26 @@
 #!/usr/bin/env bash
 
-selected=$(find ~/projects ~/projects/jkahne ~/projects/jkahne/2025 ~/projects/work -mindepth 1 -maxdepth 1 -type d | fzf)
+search_dirs=(
+  ~/projects
+  ~/projects/jkahne
+  ~/projects/jkahne/2025
+  ~/projects/old
+  ~/projects/37signals/
+  ~/projects/code-references/
+  ~/projects/github/yshmarov
+  ~/projects/make-my-own/
+  ~/projects/jbranchaud/
+  ~/projects/work
+)
+
+find_command="find"
+for dir in "${search_dirs[@]}"; do
+  find_command="$find_command $dir"
+done
+find_command="$find_command -mindepth 1 -maxdepth 1 -type d"
+
+selected=$(eval "$find_command | fzf")
+# selected=$(find ~/projects ~/projects/jkahne ~/projects/jkahne/2025 ~/projects/old ~/projects/jbranchaud/til ~/projects/work -mindepth 1 -maxdepth 1 -type d | fzf)
 
 if [[ -z "$selected" ]]; then
   exit 0
