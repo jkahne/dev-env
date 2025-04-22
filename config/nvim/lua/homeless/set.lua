@@ -94,13 +94,13 @@ vim.cmd([[
 -- Enable autoread
 vim.o.autoread = true
 
--- Create an autocommand in Lua to check for file changes
-vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
-  pattern = "*",
-  callback = function()
-    vim.cmd("checktime")
-  end,
-})
+-- -- Create an autocommand in Lua to check for file changes
+-- vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+--   pattern = "*",
+--   callback = function()
+--     vim.cmd("checktime")
+--   end,
+-- })
 
 -- Key mapping using vim.keymap.set for better readability and functionality
 vim.keymap.set("i", "<Tab>", function()
