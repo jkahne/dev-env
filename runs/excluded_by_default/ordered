@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RUNS_DIR="$(dirname "$SCRIPT_DIR")"
 
 "$RUNS_DIR/install_homebrew"
-"$RUNS_DIR/homebrew"
+"$RUNS_DIR/homebrew_formulas"
 "$RUNS_DIR/zsh" # depends on homebrew being installed
 "$RUNS_DIR/broot" # depends on zsh being present
 "$RUNS_DIR/asdf_plugins" # depends on homebrew being installed

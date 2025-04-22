@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-tmux neww -n foofoo
+tmux rename-window "editor"
+# tmux send-keys -t "$selected_name:editor" "nvim" Enter
+tmux neww -n "servers"
+tmux neww -n "terminal"
+tmux select-window -t "editor"
+nvim
