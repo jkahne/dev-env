@@ -21,6 +21,7 @@ vim.keymap.set("n", "N", "Nzzzv", { noremap = true })
 vim.keymap.set("x", "p", "pgvy", { noremap = true })
 
 vim.keymap.set("n", "Q", "q", { noremap = false })
+vim.keymap.set("n", "<leader>es", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { noremap = false })
 
 vim.keymap.set("n", "Y", "y$", { noremap = true })
 
@@ -156,13 +157,13 @@ vim.api.nvim_create_user_command("W", function()
   vim.cmd("edit!")
 end, {})
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "elixir",
-  callback = function()
-    vim.keymap.set("n", "<leader>dr", ":!mix format<CR>", { noremap = true, silent = true, buffer = true })
-  end,
-  group = vim.api.nvim_create_augroup("ElixirSettings", { clear = true }),
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "elixir",
+--   callback = function()
+--     vim.keymap.set("n", "<leader>dr", ":!mix format<CR>", { noremap = true, silent = true, buffer = true })
+--   end,
+--   group = vim.api.nvim_create_augroup("ElixirSettings", { clear = true }),
+-- })
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "ruby",
@@ -254,4 +255,4 @@ vim.keymap.set("n", "<Leader>T", ":tabnew<CR>", { noremap = false })
 vim.keymap.set({ "n", "v" }, "gb", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
+-- vim.cmd([[cab cc CodeCompanion]])

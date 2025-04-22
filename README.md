@@ -10,7 +10,8 @@ You probably want to run `run ordered --extras --dry` first.
 
 ## Dotfiles
 
-run `dotfiles` to copy my dotfiles to where they need to be. This requires that this project be in ~/dot-env.  (see top of dot-zshrc)
+run `dotfiles` to copy my dotfiles to where they need to be. 
+This requires that this project be in ~/dot-env.  (see top of dot-zshrc)
 
 you can run `dotfiles --dry` if you want to see what it will do.
 it copies a bunch of dotfiles to $HOME

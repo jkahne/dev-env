@@ -15,6 +15,7 @@ alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 
 alias tls="tmux ls"
 alias t="tmux attach -t"
+alias es="tmux-sessionizer" # Explore Sessions
 # alias til="tmux attach -t til"
 # alias web="tmux attach -t web"
 # alias monte="tmux attach -t monte"
