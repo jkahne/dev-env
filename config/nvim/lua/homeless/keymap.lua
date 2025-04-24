@@ -143,12 +143,15 @@ vim.keymap.set(
   ":tab drop " .. vim.fn.expand("$HOME") .. "/projects/worknotes/00\\ Inbox/scratch.md<CR>",
   { noremap = true }
 )
-vim.keymap.set(
-  "n",
-  "<Leader>vn",
-  ":tab drop " .. vim.fn.expand("$HOME") .. "/projects/worknotes/00\\ Inbox/vimnotes.md<CR>",
-  { noremap = true }
-)
+
+vim.keymap.set("n", "<leader>vn", ":source $MYVIMRC<CR>", { silent = true })
+
+-- vim.keymap.set(
+--   "n",
+--   "<Leader>vn",
+--   ":tab drop " .. vim.fn.expand("$HOME") .. "/projects/worknotes/00\\ Inbox/vimnotes.md<CR>",
+--   { noremap = true }
+-- )
 
 vim.keymap.set({ "n", "v" }, "<space>", "<Nop>", { silent = true })
 
