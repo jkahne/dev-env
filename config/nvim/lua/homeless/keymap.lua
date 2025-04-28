@@ -56,28 +56,29 @@ vim.keymap.set("n", "<leader>bo", ":up <bar> %bd <bar> e#<CR>", { noremap = true
 -- Switch between current and last buffer
 vim.keymap.set("n", "<Leader>c", "<C-^><CR>", { noremap = false, silent = true })
 
-vim.keymap.set("i", "<C-h>", "<Left>", { noremap = true })
-vim.keymap.set("i", "<C-j>", "<Down>", { noremap = true })
-vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true })
-vim.keymap.set("i", "<C-l>", "<Right>", { noremap = true })
+-- don't need these now with the glove80
+-- vim.keymap.set("i", "<C-h>", "<Left>", { noremap = true })
+-- vim.keymap.set("i", "<C-j>", "<Down>", { noremap = true })
+-- vim.keymap.set("i", "<C-k>", "<Up>", { noremap = true })
+-- vim.keymap.set("i", "<C-l>", "<Right>", { noremap = true })
 
 -- I don't like this
-vim.api.nvim_set_keymap("i", "<leader>j", "<Plug>(snippy-next)", { silent = true })
-vim.api.nvim_set_keymap("i", "<leader>k", "<Plug>(snippy-previous)", { silent = true })
+-- vim.api.nvim_set_keymap("i", "<leader>j", "<Plug>(snippy-next)", { silent = true })
+-- vim.api.nvim_set_keymap("i", "<leader>k", "<Plug>(snippy-previous)", { silent = true })
 
 -- Mappings for =>, <%= %>, and #{}
-vim.keymap.set("i", "<C-Enter>", " => ", { noremap = true })
-vim.keymap.set("i", "<C-;>", "- [ ] ", { noremap = true })
-vim.keymap.set("n", "<C-;>", "0i- [ ] ", { noremap = true })
-vim.keymap.set("n", "<leader>8", "i<%=  %><Left><Left><Left>", { noremap = true, silent = true })
-vim.keymap.set("i", "<leader>8", "<%=  %><Left><Left><Left>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>9", "i<% end %>", { noremap = true, silent = true })
-vim.keymap.set("i", "<leader>9", "<% end %>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>7", "i#{  }<Left><Left>")
-vim.keymap.set("i", "<leader>7", "#{  }<Left><Left>")
+-- vim.keymap.set("i", "<C-Enter>", " => ", { noremap = true })
+-- vim.keymap.set("i", "<C-;>", "- [ ] ", { noremap = true })
+-- vim.keymap.set("n", "<C-;>", "0i- [ ] ", { noremap = true })
+-- vim.keymap.set("n", "<leader>8", "i<%=  %><Left><Left><Left>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<leader>8", "<%=  %><Left><Left><Left>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>9", "i<% end %>", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<leader>9", "<% end %>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<leader>7", "i#{  }<Left><Left>")
+-- vim.keymap.set("i", "<leader>7", "#{  }<Left><Left>")
 
-vim.keymap.set("n", "<C-.>", "i#{  }<Left><Left>")
-vim.keymap.set("i", "<C-.>", "#{  }<Left><Left>")
+-- vim.keymap.set("n", "<C-.>", "i#{  }<Left><Left>")
+-- vim.keymap.set("i", "<C-.>", "#{  }<Left><Left>")
 -- vim.keymap.set("n", "<leader>4", "i${  }<Left><Left>")
 -- vim.keymap.set("i", "<leader>4", "${  }<Left><Left>")
 -- vim.keymap.set("n", "<leader>5", "i%{  }<Left><Left>")
