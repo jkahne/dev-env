@@ -132,7 +132,7 @@ alias web="cd ~/projects/jkahne/jkahnecom"
 alias blog="cd ~/projects/jkahne/jkahnecom"
 alias topaz="cd ~/projects/jkahne/2025/topaz"
 alias d="cd ~/.dotfiles && nvim"
-alias de="cd ~/dev-env && nvim"
+alias de="cd ~/dev-env && tmux-sessionizer ."
 
 alias llm_templates="cd ~/Library/Application Support/io.datasette.llm/templates"
 

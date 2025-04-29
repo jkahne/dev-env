@@ -1,32 +1,41 @@
 #!/usr/bin/env bash
 
-search_dirs=(
-  ~/projects
-  ~/projects/jkahne
-  ~/projects/jkahne/2025
-  ~/projects/old
-  ~/projects/37signals/
-  ~/projects/code-references/
-  ~/projects/github/yshmarov
-  ~/projects/make-my-own/
-  ~/projects/jbranchaud/
-  ~/projects/work
-)
+if [[ $# -gt 0 ]]; then
+  selected=$(cd "$1" && pwd)
 
-direct_dirs=(
-  ~/dev-env/
-)
+  if [[ ! -d "$selected" ]]; then
+    echo "Error: Directory '$1' does not exist."
+    exit 1
+  fi
+else
+  search_dirs=(
+    ~/projects
+    ~/projects/jkahne
+    ~/projects/jkahne/2025
+    ~/projects/old
+    ~/projects/37signals/
+    ~/projects/code-references/
+    ~/projects/github/yshmarov
+    ~/projects/make-my-own/
+    ~/projects/jbranchaud/
+    ~/projects/work
+  )
 
-find_command="find"
-for dir in "${search_dirs[@]}"; do
-  find_command="$find_command $dir"
-done
-find_command="$find_command -mindepth 1 -maxdepth 1 -type d"
+  direct_dirs=(
+    ~/dev-env/
+  )
 
-selected=$(eval "$find_command; printf '%s\n' \"\${direct_dirs[@]}\"" | fzf)
+  find_command="find"
+  for dir in "${search_dirs[@]}"; do
+    find_command="$find_command $dir"
+  done
+  find_command="$find_command -mindepth 1 -maxdepth 1 -type d"
 
-if [[ -z "$selected" ]]; then
-  exit 0
+  selected=$(eval "$find_command; printf '%s\n' \"\${direct_dirs[@]}\"" | fzf)
+
+  if [[ -z "$selected" ]]; then
+    exit 0
+  fi
 fi
 
 selected_name=$(basename "$selected" | tr ":,. " "____")
