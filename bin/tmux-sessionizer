@@ -13,13 +13,17 @@ search_dirs=(
   ~/projects/work
 )
 
+direct_dirs=(
+  ~/dev-env/
+)
+
 find_command="find"
 for dir in "${search_dirs[@]}"; do
   find_command="$find_command $dir"
 done
 find_command="$find_command -mindepth 1 -maxdepth 1 -type d"
 
-selected=$(eval "$find_command | fzf")
+selected=$(eval "$find_command; printf '%s\n' \"\${direct_dirs[@]}\"" | fzf)
 
 if [[ -z "$selected" ]]; then
   exit 0
