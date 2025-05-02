@@ -1,13 +1,5 @@
-#!/usr/bin/env bash
-
-if [[ $# -gt 0 ]]; then
-  selected=$(cd "$1" && pwd)
-
-  if [[ ! -d "$selected" ]]; then
-    echo "Error: Directory '$1' does not exist."
-    exit 1
-  fi
-else
+# Function to generate the list of directories for selection
+generate_dir_list() {
   search_dirs=(
     ~/projects
     ~/projects/jkahne
@@ -31,7 +23,26 @@ else
   done
   find_command="$find_command -mindepth 1 -maxdepth 1 -type d"
 
-  selected=$(eval "$find_command; printf '%s\n' \"\${direct_dirs[@]}\"" | fzf)
+  eval "$find_command; printf '%s\n' \"\${direct_dirs[@]}\""
+}
+
+# Case 1: Directory is specified
+if [[ $# -gt 0 && -d "$1" ]]; then
+  selected=$(cd "$1" && pwd)
+
+# Case 2: Argument is specified but not a directory - use as search term
+elif [[ $# -gt 0 ]]; then
+  search_term="$1"
+  selected=$(generate_dir_list | fzf -q "$search_term" --select-1)
+
+  if [[ -z "$selected" ]]; then
+    echo "No directory matching '$search_term' found."
+    exit 1
+  fi
+
+# Case 3: No argument provided - interactive selection
+else
+  selected=$(generate_dir_list | fzf)
 
   if [[ -z "$selected" ]]; then
     exit 0

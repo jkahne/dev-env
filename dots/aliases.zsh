@@ -15,7 +15,7 @@ alias binit="bi && b package && echo 'vendor/ruby' >> .gitignore"
 
 alias tls="tmux ls"
 alias t="tmux attach -t"
-alias es="tmux-sessionizer" # Explore Sessions
+alias se="sess" # Explore Sessions
 # alias til="tmux attach -t til"
 # alias web="tmux attach -t web"
 # alias monte="tmux attach -t monte"
@@ -132,7 +132,7 @@ alias web="cd ~/projects/jkahne/jkahnecom"
 alias blog="cd ~/projects/jkahne/jkahnecom"
 alias topaz="cd ~/projects/jkahne/2025/topaz"
 alias d="cd ~/.dotfiles && nvim"
-alias de="cd ~/dev-env && tmux-sessionizer ."
+alias de="cd ~/dev-env && sess ."
 
 alias llm_templates="cd ~/Library/Application Support/io.datasette.llm/templates"
 

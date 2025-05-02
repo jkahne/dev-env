@@ -21,7 +21,7 @@ vim.keymap.set("n", "N", "Nzzzv", { noremap = true })
 vim.keymap.set("x", "p", "pgvy", { noremap = true })
 
 vim.keymap.set("n", "Q", "q", { noremap = false })
-vim.keymap.set("n", "<leader>es", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { noremap = false })
+vim.keymap.set("n", "<leader>se", "<cmd>silent !tmux neww sess<CR>", { noremap = false })
 
 vim.keymap.set("n", "Y", "y$", { noremap = true })
 
