@@ -1,12 +1,12 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
-vim.keymap.set("i", "<Leader>,", "<Esc>", { noremap = true })
-vim.keymap.set("v", "<Leader>,", "<Esc>", { noremap = true })
-vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
-vim.keymap.set("i", "kk", "<Esc>", { noremap = true })
-vim.keymap.set("i", "jkk", "<Esc>", { noremap = true })
--- vim.keymap.set('i', ',,', '<Esc>', { noremap = true })
--- vim.keymap.set('v', ',,', '<Esc>', { noremap = true })
+-- vim.keymap.set("i", "<Leader>,", "<Esc>", { noremap = true })
+-- vim.keymap.set("v", "<Leader>,", "<Esc>", { noremap = true })
+-- vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
+-- vim.keymap.set("i", "kk", "<Esc>", { noremap = true })
+-- vim.keymap.set("i", "jkk", "<Esc>", { noremap = true })
+vim.keymap.set("i", ",,", "<Esc>", { noremap = true })
+vim.keymap.set("v", ",,", "<Esc>", { noremap = true })
 
 vim.keymap.set("n", "go", "o<Esc>", { noremap = false })
 vim.keymap.set("n", "gO", "O<Esc>", { noremap = false })
