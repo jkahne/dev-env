@@ -74,7 +74,7 @@
                                         "key_up_order": "insensitive"
                                     }
                                 },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 150 },
+                                "parameters": { "basic.simultaneous_threshold_milliseconds": 90 },
                                 "to": [
                                     {
                                         "key_code": "left_shift",
