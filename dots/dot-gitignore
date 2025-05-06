@@ -37,3 +37,4 @@ config/nvim/db_ui/
 /dot-config/op/config
 /vendor/ruby/
 .ready-tmux
+lib/scratchpad.rb
