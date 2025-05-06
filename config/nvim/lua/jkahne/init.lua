@@ -1,6 +1,6 @@
-require("homeless.set")
-require("homeless.keymap")
-require("homeless.lazy_init")
+require("jkahne.set")
+require("jkahne.keymap")
+require("jkahne.lazy_init")
 
 vim.api.nvim_command('command! CopyFilePath let @+ = expand("%:p")')
 
