@@ -1,6 +1,4 @@
 autoload colors && colors
-# cheers, @ehrenmurdick
-# # http://github.com/ehrenmurdick/config/blob/master/zsh/prompt.zsh
 
 if (( $+commands[git] ))
 then
@@ -46,27 +44,6 @@ need_push () {
   fi
 }
 
-
-zelda () {
-  if (( $+commands[pmset] )) ; then
-    battery="$(pmset -g ps | awk 'NR==2' | perl -pe 's/.*?(\d+)%.*/\1/')"
-
-    if [[ $battery -lt 17 ]]; then
-      echo "♥️ 🤍🤍🤍🤍🤍"
-    elif [[ $battery -lt 34 ]]; then
-      echo "♥️ ♥️ 🤍🤍🤍🤍"
-    elif [[ $battery -lt 51 ]]; then
-      echo "♥️ ♥️ ♥️ 🤍🤍🤍"
-    elif [[ $battery -lt 68 ]]; then
-      echo "♥️ ♥️ ♥️ ♥️ 🤍🤍"
-    elif [[ $battery -lt 85 ]]; then
-      echo "♥️ ♥️ ♥️ ♥️ ♥️ 🤍"
-    else
-      echo "♥️ ♥️ ♥️ ♥️ ♥️ ♥️ "
-    fi
-  fi
-}
-
 directory_name() {
   echo "%{$fg_bold[green]%}%2/%\/%{$reset_color%}"
 }
@@ -80,4 +57,3 @@ export PROMPT=$'\n$(directory_name) $(git_dirty)$(need_push)\n› '
 # #   title "zsh" "%m" "%55<...<%~"
 #   set_prompt
 # }
-

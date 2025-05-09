@@ -131,6 +131,7 @@
                         "description": "Map e & r to shift & ctrl when held",
                         "manipulators": [
                             {
+                                "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -143,7 +144,6 @@
                                         "key_up_order": "insensitive"
                                     }
                                 },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
                                 "to": [
                                     {
                                         "key_code": "left_shift",
@@ -158,6 +158,7 @@
                         "description": "Map f & d to Hyper Minor when held",
                         "manipulators": [
                             {
+                                "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
                                 "from": {
                                     "modifiers": { "optional": ["any"] },
                                     "simultaneous": [
@@ -170,12 +171,12 @@
                                         "key_up_order": "insensitive"
                                     }
                                 },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 200 },
                                 "to": [
                                     {
                                         "key_code": "left_command",
                                         "modifiers": ["left_control", "left_option"]
                                     }
+
                                 ],
                                 "type": "basic"
                             }
@@ -190,7 +191,9 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 50 },
-                                "to": [{ "key_code": "tab" }],
+                                "to": [
+                                  { "key_code": "tab" }
+                                ],
                                 "to_if_held_down": [
                                     {
                                         "key_code": "left_shift",
@@ -217,12 +220,13 @@
                                         "key_up_order": "insensitive"
                                     }
                                 },
-                                "parameters": { "basic.simultaneous_threshold_milliseconds": 200 },
+                                "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
                                 "to": [
                                     {
                                         "key_code": "left_command",
                                         "modifiers": ["left_control", "left_option"]
                                     }
+
                                 ],
                                 "type": "basic"
                             }
