@@ -108,3 +108,30 @@ end
 vim.api.nvim_create_user_command("Screenshot", function(opts)
   take_screenshot(opts.args)
 end, { nargs = 1 })
+
+------------------
+--- Custom Macro
+------------------
+local esc = vim.api.nvim_replace_termcodes("<Esc>", true, true, true)
+
+vim.api.nvim_create_augroup("RubyLogMacro", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = "RubyLogMacro",
+  pattern = "ruby",
+  callback = function()
+    -- vim.cmd("silent !rubocop -A %")
+
+    -- @l => yanks whatever is visually selected and puts it into a puts statement
+    vim.fn.setreg("l", 'yoputs "' .. esc .. "pa: #{ " .. esc .. 'pa.inspect }"' .. esc .. "bb")
+  end,
+})
+
+vim.api.nvim_create_augroup("JSLogMacro", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+  group = "JSLogMacro",
+  pattern = { "javascript", "typescript" },
+  callback = function()
+    -- @l => yanks whatever is visually selected and puts it into a console.log statement
+    vim.fn.setreg("l", "yoconsole.log('" .. esc .. "pa: ', " .. esc .. "pa )" .. esc)
+  end,
+})
