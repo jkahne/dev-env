@@ -59,19 +59,17 @@ return {
           :find()
       end
 
-      vim.keymap.set("n", "<C-S-m>", function()
-        toggle_telescope(harpoon:list())
-      end, { desc = "Open harpoon window" })
       vim.keymap.set("n", "<C-S-u>", function()
         harpoon:list():add()
       end, { desc = "add a file to harpoon" })
       vim.keymap.set("n", "<C-S-i>", function()
         harpoon:list():remove()
       end, { desc = "remove a file from harpoon" })
-      -- vim.keymap.set("n", "<leader>N", function()
-      --   harpoon.ui:toggle_quick_menu(harpoon:list())
-      -- end)
-      --
+      -- vim.keymap.set("n", "<C-S-m>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
+      vim.keymap.set("n", "<C-S-m>", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
+
       vim.keymap.set("n", "<C-S-h>", function()
         harpoon:list():select(1)
       end, { desc = "open the first file in harpoon list" })
