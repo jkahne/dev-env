@@ -57,6 +57,44 @@
                             }
                         ]
                     },
+{
+  "description": "Toggle second_layer with w + e",
+  "manipulators": [
+    {
+      "type": "basic",
+      "from": { "simultaneous": [ { "key_code": "w" }, { "key_code": "e" } ],
+        "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" }
+      },
+      "conditions": [ { "type": "variable_if", "name": "second_layer", "value": 0 } ],
+      "to": [ { "set_variable": { "name": "second_layer", "value": 1 } } ]
+    },
+    {
+      "type": "basic",
+      "from": { "simultaneous": [ { "key_code": "w" }, { "key_code": "e" } ],
+        "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" }
+      },
+      "conditions": [ { "type": "variable_if", "name": "second_layer", "value": 1 } ],
+      "to": [ { "set_variable": { "name": "second_layer", "value": 0 } } ]
+    }
+  ]
+},
+                    {
+                        "description": "second_layer remaps: numbers",
+                        "manipulators": [
+                            {
+                                "conditions": [ { "name": "second_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "j" }, "to": [{ "key_code": "4" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "second_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "k" }, "to": [{ "key_code": "5" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "second_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "l" }, "to": [{ "key_code": "6" }], "type": "basic"
+                            }
+                        ]
+                    },
                     {
                         "description": "Map f & g to Hyper Minor when held",
                         "manipulators": [
