@@ -57,41 +57,71 @@
                             }
                         ]
                     },
+
+
 {
-  "description": "Toggle second_layer with w + e",
+  "description": "Toggle m_layer with Cmd + Ctrl + Option + y",
   "manipulators": [
     {
       "type": "basic",
-      "from": { "simultaneous": [ { "key_code": "w" }, { "key_code": "e" } ],
-        "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" }
-      },
-      "conditions": [ { "type": "variable_if", "name": "second_layer", "value": 0 } ],
-      "to": [ { "set_variable": { "name": "second_layer", "value": 1 } } ]
+      "from": { "key_code": "y", "modifiers": { "mandatory": ["left_command", "left_control", "left_option"], "optional": ["any"] } },
+      "conditions": [ { "type": "variable_if", "name": "m_layer", "value": 0 } ],
+      "to": [ { "set_variable": { "name": "m_layer", "value": 1 } } ]
     },
     {
       "type": "basic",
-      "from": { "simultaneous": [ { "key_code": "w" }, { "key_code": "e" } ],
-        "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" }
-      },
-      "conditions": [ { "type": "variable_if", "name": "second_layer", "value": 1 } ],
-      "to": [ { "set_variable": { "name": "second_layer", "value": 0 } } ]
+      "from": { "key_code": "y", "modifiers": { "mandatory": ["left_command", "left_control", "left_option"], "optional": ["any"] } },
+      "conditions": [ { "type": "variable_if", "name": "m_layer", "value": 1 } ],
+      "to": [ { "set_variable": { "name": "m_layer", "value": 0 } } ]
     }
   ]
 },
                     {
-                        "description": "second_layer remaps: numbers",
+                        "description": "m_layer remaps: numbers",
                         "manipulators": [
                             {
-                                "conditions": [ { "name": "second_layer", "type": "variable_if", "value": 1 } ],
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "right_command" }, "to": [{ "key_code": "0" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "semicolon" }, "to": [{ "key_code": "period" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "m" }, "to": [{ "key_code": "1" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "comma" }, "to": [{ "key_code": "2" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "period" }, "to": [{ "key_code": "3" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
                                 "from": { "key_code": "j" }, "to": [{ "key_code": "4" }], "type": "basic"
                             },
                             {
-                                "conditions": [ { "name": "second_layer", "type": "variable_if", "value": 1 } ],
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
                                 "from": { "key_code": "k" }, "to": [{ "key_code": "5" }], "type": "basic"
                             },
                             {
-                                "conditions": [ { "name": "second_layer", "type": "variable_if", "value": 1 } ],
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
                                 "from": { "key_code": "l" }, "to": [{ "key_code": "6" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "u" }, "to": [{ "key_code": "7" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "i" }, "to": [{ "key_code": "8" }], "type": "basic"
+                            },
+                            {
+                                "conditions": [ { "name": "m_layer", "type": "variable_if", "value": 1 } ],
+                                "from": { "key_code": "o" }, "to": [{ "key_code": "9" }], "type": "basic"
                             }
                         ]
                     },
@@ -146,6 +176,27 @@
                         ]
                     },
                     {
+                        "description": "Map f & v to SHIFT + CTRL when held",
+                        "manipulators": [
+                            {
+                                "from": { "simultaneous": [ { "key_code": "f" }, { "key_code": "v" } ],
+                                    "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" } }, "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
+                                "to": [ { "key_code": "left_control", "modifiers": ["left_shift"] } ], "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map r & v to CMD + CTRL when held",
+                        "manipulators": [
+                            {
+                                "from": { "simultaneous": [ { "key_code": "r" }, { "key_code": "v" } ],
+                                    "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" } }, "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
+                                "to": [ { "key_code": "left_control", "modifiers": ["left_command"] } ], "type": "basic"
+                            }
+                        ]
+                    },
+
+                    {
                         "description": "Map u & i to CMD when held",
                         "manipulators": [
                             {
@@ -191,6 +242,37 @@
                               "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" } }, "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
                               "to": [ { "key_code": "left_command", "modifiers": ["left_control", "left_option"] } ], "type": "basic"
                           }
+                        ]
+                    },
+
+                    {
+                        "description": "Map j & i to SHIFT + CMD when held",
+                        "manipulators": [
+                            {
+                                "from": { "simultaneous": [ { "key_code": "j" }, { "key_code": "i" } ],
+                                    "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" } }, "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
+                                "to": [ { "key_code": "left_command", "modifiers": ["left_shift"] } ], "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map k & m to SHIFT + CTRL when held",
+                        "manipulators": [
+                            {
+                                "from": { "simultaneous": [ { "key_code": "k" }, { "key_code": "m" } ],
+                                    "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" } }, "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
+                                "to": [ { "key_code": "left_control", "modifiers": ["left_shift"] } ], "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Map m & i to CMD + CTRL when held",
+                        "manipulators": [
+                            {
+                                "from": { "simultaneous": [ { "key_code": "m" }, { "key_code": "v" } ],
+                                    "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" } }, "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
+                                "to": [ { "key_code": "left_control", "modifiers": ["left_command"] } ], "type": "basic"
+                            }
                         ]
                     }
 
