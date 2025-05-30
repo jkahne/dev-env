@@ -6,28 +6,22 @@
                 "rules": [
 
 
-  {
-    "description": "Tap semicolon = semicolon, Hold semicolon sets semicolon_layer = 1",
-    "manipulators": [
-      {
-        "type": "basic",
-        "from": {
-          "key_code": "semicolon",
-          "modifiers": { "optional": ["any"] }
-        },
-        "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
-        "to_if_alone": [
-          { "key_code": "semicolon" }
-        ],
-        "to_if_held_down": [
-          { "set_variable": { "name": "semicolon_layer", "value": 1 } }
-        ],
-        "to_after_key_up": [
-          { "set_variable": { "name": "semicolon_layer", "value": 0 } }
-        ]
-      }
-    ]
-  },
+{
+  "description": "Tap semicolon = semicolon, Hold semicolon sets semicolon_layer = 1",
+  "manipulators": [
+    {
+      "type": "basic",
+      "from": {
+        "key_code": "semicolon",
+        "modifiers": { "optional": ["any"] }
+      },
+      "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+      "to_if_alone": [ { "key_code": "semicolon" } ],
+      "to_if_held_down": [ { "set_variable": { "name": "semicolon_layer", "value": 1 } } ],
+      "to_after_key_up": [ { "set_variable": { "name": "semicolon_layer", "value": 0 } } ]
+    }
+  ]
+},
 {
     "description": "semicolon_layer!!",
     "manipulators": [
