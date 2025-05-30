@@ -1,3 +1,24 @@
+
+                    {
+                      "description": "Remaps numbers to: [{(-=)}]",
+                      "manipulators": [
+                        { "from": { "key_code": "3" }, "to": [{ "key_code": "open_bracket" }], "type": "basic" },
+                        { "from": { "key_code": "4" }, "to": [{ "key_code": "open_bracket", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "from": { "key_code": "5" }, "to": [{ "key_code": "9", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "from": { "key_code": "6" }, "to": [{ "key_code": "hyphen" }], "type": "basic" },
+                        { "from": { "key_code": "7" }, "to": [{ "key_code": "equal_sign" }], "type": "basic" },
+                        { "from": { "key_code": "8" }, "to": [{ "key_code": "0", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "from": { "key_code": "9" }, "to": [{ "key_code": "close_bracket", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "from": { "key_code": "0" }, "to": [{ "key_code": "close_bracket" }], "type": "basic" },
+
+                        { "from": { "key_code": "6", "modifiers": { "mandatory": ["shift"] } }, "to": [{ "key_code": "hyphen", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "from": { "key_code": "7", "modifiers": { "mandatory": ["shift"] } }, "to": [{ "key_code": "equal_sign", "modifiers": ["left_shift"] }], "type": "basic" }
+                      ]
+                    }
+
+
+
+
 {
   "description": "n => tap: n, hold: shift (lazy)",
   "manipulators": [
