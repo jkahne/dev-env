@@ -4,28 +4,45 @@
             "complex_modifications": {
                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 50 },
                 "rules": [
+
+
+
+
+{
+  "description": "caps_lock: esc if tapped, ctrl if held, and always reset n_layer (with debug)",
+  "manipulators": [
+    {
+      "type": "basic",
+      "from": {
+        "key_code": "caps_lock",
+        "modifiers": { "optional": ["any"] }
+      },
+      "to_if_alone": [
+        { "set_variable": { "name": "n_layer", "value": 0 } },
+        { "set_notification_message": { "id": "layer", "text": "" } },
+        { "key_code": "escape" }
+      ],
+      "to_if_held_down": [
+        { "set_variable": { "name": "n_layer", "value": 0 } },
+        { "set_notification_message": { "id": "layer", "text": "" } },
+        { "key_code": "left_control" }
+      ]
+    }
+  ]
+},
+
+
                     {
-                      "description": "Change caps_lock to control if held, escape if tapped",
-                      "manipulators": [
-                        {
-                          "type": "basic",
-                          "from": { "key_code": "caps_lock", "modifiers": { "optional": ["any"] } },
-                          "to": [ { "key_code": "left_control" } ],
-                          "to_if_alone": [ { "key_code": "escape" } ]
-                        }
-                      ]
-                    },
-                    {
-                      "description": "Tap semicolon = semicolon, Hold semicolon sets semicolon_layer = 1",
+                      "description": "Tap quote = quote, Hold quote sets semicolon_layer = 1",
                       "manipulators": [
                         {
                           "type": "basic",
                           "from": {
-                            "key_code": "semicolon",
+                            "key_code": "quote",
                             "modifiers": { "optional": ["any"] }
                           },
                           "parameters": { "basic.to_if_held_down_threshold_milliseconds": 50 },
-                          "to_if_alone": [ { "key_code": "semicolon" } ],
+                          "to_if_alone": [ { "key_code": "quote" } ],
                           "to_if_held_down": [ { "set_variable": { "name": "semicolon_layer", "value": 1 } } ],
                           "to_after_key_up": [ { "set_variable": { "name": "semicolon_layer", "value": 0 } } ]
                         }
@@ -79,13 +96,17 @@
                           "type": "basic",
                           "from": { "key_code": "n", "modifiers": { "mandatory": ["left_command", "left_control", "left_option"], "optional": ["any"] } },
                           "conditions": [ { "type": "variable_if", "name": "n_layer", "value": 0 } ],
-                          "to": [ { "set_variable": { "name": "n_layer", "value": 1 } } ]
+                          "to": [ { "set_variable": { "name": "n_layer", "value": 1 } },
+                                { "set_notification_message": { "id": "layer", "text": "n_layer" } }
+                          ]
                         },
                         {
                           "type": "basic",
                           "from": { "key_code": "n", "modifiers": { "mandatory": ["left_command", "left_control", "left_option"], "optional": ["any"] } },
                           "conditions": [ { "type": "variable_if", "name": "n_layer", "value": 1 } ],
-                          "to": [ { "set_variable": { "name": "n_layer", "value": 0 } } ]
+                          "to": [ { "set_variable": { "name": "n_layer", "value": 0 } },
+                                { "set_notification_message": { "id": "layer", "text": "" } }
+                          ]
                         }
                       ]
                     },
@@ -101,7 +122,7 @@
                         { "conditions": [{ "name": "n_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "j" }, "to": [{ "key_code": "7" }], "type": "basic" },
                         { "conditions": [{ "name": "n_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "k" }, "to": [{ "key_code": "8" }], "type": "basic" },
                         { "conditions": [{ "name": "n_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "l" }, "to": [{ "key_code": "9" }], "type": "basic" },
-                        { "conditions": [{ "name": "n_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "semicolon" }, "to": [{ "key_code": "0" }], "type": "basic" },
+                        { "conditions": [{ "name": "n_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "semicolon",  "modifiers": { "optional": ["any"] } }, "to": [{ "key_code": "0" }], "type": "basic" },
 
                         { "conditions": [{ "name": "n_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "a", "modifiers": { "mandatory": ["shift"] } }, "to": [{ "key_code": "1", "modifiers": ["left_shift"] }], "type": "basic" },
                         { "conditions": [{ "name": "n_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "s", "modifiers": { "mandatory": ["shift"] } }, "to": [{ "key_code": "2", "modifiers": ["left_shift"] }], "type": "basic" },
