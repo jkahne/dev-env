@@ -4,49 +4,57 @@
             "complex_modifications": {
                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 50 },
                 "rules": [
+                    {
+                      "description": "Change caps_lock to control if held, escape if tapped",
+                      "manipulators": [
+                        {
+                          "type": "basic",
+                          "from": { "key_code": "caps_lock", "modifiers": { "optional": ["any"] } },
+                          "to": [ { "key_code": "left_control" } ],
+                          "to_if_alone": [ { "key_code": "escape" } ]
+                        }
+                      ]
+                    },
+                    {
+                      "description": "Tap semicolon = semicolon, Hold semicolon sets semicolon_layer = 1",
+                      "manipulators": [
+                        {
+                          "type": "basic",
+                          "from": {
+                            "key_code": "semicolon",
+                            "modifiers": { "optional": ["any"] }
+                          },
+                          "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                          "to_if_alone": [ { "key_code": "semicolon" } ],
+                          "to_if_held_down": [ { "set_variable": { "name": "semicolon_layer", "value": 1 } } ],
+                          "to_after_key_up": [ { "set_variable": { "name": "semicolon_layer", "value": 0 } } ]
+                        }
+                      ]
+                    },
+                    {
+                      "description": "semicolon_layer!!",
+                      "manipulators": [
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "a" }, "to": [{ "key_code": "grave_accent_and_tilde" }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "s" }, "to": [{ "key_code": "open_bracket" }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "d" }, "to": [{ "key_code": "open_bracket", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "f" }, "to": [{ "key_code": "9", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "g" }, "to": [{ "key_code": "hyphen" }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "h" }, "to": [{ "key_code": "equal_sign" }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "j" }, "to": [{ "key_code": "0", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "k" }, "to": [{ "key_code": "close_bracket", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "l" }, "to": [{ "key_code": "close_bracket" }], "type": "basic" },
 
-
-{
-  "description": "Tap semicolon = semicolon, Hold semicolon sets semicolon_layer = 1",
-  "manipulators": [
-    {
-      "type": "basic",
-      "from": {
-        "key_code": "semicolon",
-        "modifiers": { "optional": ["any"] }
-      },
-      "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
-      "to_if_alone": [ { "key_code": "semicolon" } ],
-      "to_if_held_down": [ { "set_variable": { "name": "semicolon_layer", "value": 1 } } ],
-      "to_after_key_up": [ { "set_variable": { "name": "semicolon_layer", "value": 0 } } ]
-    }
-  ]
-},
-{
-    "description": "semicolon_layer!!",
-    "manipulators": [
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "a" }, "to": [{ "key_code": "grave_accent_and_tilde" }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "s" }, "to": [{ "key_code": "open_bracket" }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "d" }, "to": [{ "key_code": "open_bracket", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "f" }, "to": [{ "key_code": "9", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "g" }, "to": [{ "key_code": "hyphen" }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "h" }, "to": [{ "key_code": "equal_sign" }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "j" }, "to": [{ "key_code": "0", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "k" }, "to": [{ "key_code": "close_bracket", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "l" }, "to": [{ "key_code": "close_bracket" }], "type": "basic" },
-
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "z" }, "to": [{ "key_code": "grave_accent_and_tilde", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "x" }, "to": [{ "key_code": "left_arrow" }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "c" }, "to": [{ "key_code": "right_arrow" }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "b" }, "to": [{ "key_code": "hyphen", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "v" }, "to": [{ "key_code": "hyphen", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "n" }, "to": [{ "key_code": "equal_sign", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "m" }, "to": [{ "key_code": "equal_sign", "modifiers": ["left_shift"] }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "comma" }, "to": [{ "key_code": "left_arrow" }], "type": "basic" },
-            { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "period" }, "to": [{ "key_code": "right_arrow" }], "type": "basic" }
-    ]
-},
-
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "z" }, "to": [{ "key_code": "grave_accent_and_tilde", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "x" }, "to": [{ "key_code": "left_arrow" }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "c" }, "to": [{ "key_code": "right_arrow" }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "b" }, "to": [{ "key_code": "hyphen", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "v" }, "to": [{ "key_code": "hyphen", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "n" }, "to": [{ "key_code": "equal_sign", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "m" }, "to": [{ "key_code": "equal_sign", "modifiers": ["left_shift"] }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "comma" }, "to": [{ "key_code": "left_arrow" }], "type": "basic" },
+                        { "conditions": [{ "name": "semicolon_layer", "type": "variable_if", "value": 1 }], "from": { "key_code": "period" }, "to": [{ "key_code": "right_arrow" }], "type": "basic" }
+                      ]
+                    },
                     {
                       "description": "Tap Tab sends Tab, Hold Tab sends Cmd+Ctrl+Opt (Hyper)",
                       "manipulators": [
@@ -65,7 +73,7 @@
                       ]
                     },
                     {
-                      "description": "Toggle n_layer with Cmd + Ctrl + Option + n     (f+d+n) or (tab+n)",
+                      "description": "Toggle n_layer with Cmd + Ctrl + Option + n     (tab+n)",
                       "manipulators": [
                         {
                           "type": "basic",
@@ -125,7 +133,7 @@
                       ]
                     },
                     {
-                      "description": "Toggle y_layer with Cmd + Ctrl + Option + y     (f+d+y) or (tab+y)",
+                      "description": "Toggle y_layer with Cmd + Ctrl + Option + y      (tab+y)",
                       "manipulators": [
                         {
                           "type": "basic",
@@ -220,12 +228,6 @@
             },
             "name": "Default profile",
             "selected": true,
-            "simple_modifications": [
-                {
-                    "from": { "key_code": "caps_lock" },
-                    "to": [{ "key_code": "left_control" }]
-                }
-            ],
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
         }
     ]
