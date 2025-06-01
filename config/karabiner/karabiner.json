@@ -24,7 +24,7 @@
                             "key_code": "semicolon",
                             "modifiers": { "optional": ["any"] }
                           },
-                          "parameters": { "basic.to_if_held_down_threshold_milliseconds": 100 },
+                          "parameters": { "basic.to_if_held_down_threshold_milliseconds": 50 },
                           "to_if_alone": [ { "key_code": "semicolon" } ],
                           "to_if_held_down": [ { "set_variable": { "name": "semicolon_layer", "value": 1 } } ],
                           "to_after_key_up": [ { "set_variable": { "name": "semicolon_layer", "value": 0 } } ]
