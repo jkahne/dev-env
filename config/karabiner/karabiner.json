@@ -15,12 +15,14 @@
                           },
                           "to_if_alone": [
                             { "set_variable": { "name": "n_layer", "value": 0 } },
-                            { "set_notification_message": { "id": "layer", "text": "" } },
+                            { "set_variable": { "name": "y_layer", "value": 0 } },
+                            { "set_variable": { "name": "semicolon_layer", "value": 0 } },
                             { "key_code": "escape" }
                           ],
                           "to_if_held_down": [
                             { "set_variable": { "name": "n_layer", "value": 0 } },
-                            { "set_notification_message": { "id": "layer", "text": "" } },
+                            { "set_variable": { "name": "y_layer", "value": 0 } },
+                            { "set_variable": { "name": "semicolon_layer", "value": 0 } },
                             { "key_code": "left_control" }
                           ]
                         }
@@ -90,17 +92,13 @@
                           "type": "basic",
                           "from": { "key_code": "n", "modifiers": { "mandatory": ["left_command", "left_control", "left_option"], "optional": ["any"] } },
                           "conditions": [ { "type": "variable_if", "name": "n_layer", "value": 0 } ],
-                          "to": [ { "set_variable": { "name": "n_layer", "value": 1 } },
-                                { "set_notification_message": { "id": "layer", "text": "n_layer" } }
-                          ]
+                          "to": [ { "set_variable": { "name": "n_layer", "value": 1 } } ]
                         },
                         {
                           "type": "basic",
                           "from": { "key_code": "n", "modifiers": { "mandatory": ["left_command", "left_control", "left_option"], "optional": ["any"] } },
                           "conditions": [ { "type": "variable_if", "name": "n_layer", "value": 1 } ],
-                          "to": [ { "set_variable": { "name": "n_layer", "value": 0 } },
-                                { "set_notification_message": { "id": "layer", "text": "" } }
-                          ]
+                          "to": [ { "set_variable": { "name": "n_layer", "value": 0 } } ]
                         }
                       ]
                     },
