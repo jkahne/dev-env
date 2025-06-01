@@ -90,7 +90,7 @@
                       ]
                     },
                     {
-                      "description": "Tap Tab sends Tab, Hold Tab sends Cmd+Ctrl+Opt (Hyper)",
+                      "description": "Tap Tab sends Tab, Hold Tab sends Cmd+Ctrl+Opt (HyperMinor)",
                       "manipulators": [
                         {
                           "type": "basic",
@@ -107,7 +107,7 @@
                       ]
                     },
                     {
-                      "description": "Tap backslash sends backslash, Hold backslash sends Cmd+Ctrl+Opt (Hyper)",
+                      "description": "Tap backslash sends backslash, Hold backslash sends Cmd+Ctrl+Opt (HyperMinor)",
                       "manipulators": [
                         {
                           "type": "basic",
