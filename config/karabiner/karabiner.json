@@ -4,31 +4,28 @@
             "complex_modifications": {
                 "parameters": { "basic.to_if_held_down_threshold_milliseconds": 50 },
                 "rules": [
-
-{
-  "description": "caps_lock: esc if tapped, ctrl if held, and always reset n_layer (with debug)",
-  "manipulators": [
-    {
-      "type": "basic",
-      "from": {
-        "key_code": "caps_lock",
-        "modifiers": { "optional": ["any"] }
-      },
-      "to_if_alone": [
-        { "set_variable": { "name": "n_layer", "value": 0 } },
-        { "set_notification_message": { "id": "layer", "text": "" } },
-        { "key_code": "escape" }
-      ],
-      "to_if_held_down": [
-        { "set_variable": { "name": "n_layer", "value": 0 } },
-        { "set_notification_message": { "id": "layer", "text": "" } },
-        { "key_code": "left_control" }
-      ]
-    }
-  ]
-},
-
-
+                    {
+                      "description": "caps_lock: esc if tapped, ctrl if held, and always reset n_layer (with debug)",
+                      "manipulators": [
+                        {
+                          "type": "basic",
+                          "from": {
+                            "key_code": "caps_lock",
+                            "modifiers": { "optional": ["any"] }
+                          },
+                          "to_if_alone": [
+                            { "set_variable": { "name": "n_layer", "value": 0 } },
+                            { "set_notification_message": { "id": "layer", "text": "" } },
+                            { "key_code": "escape" }
+                          ],
+                          "to_if_held_down": [
+                            { "set_variable": { "name": "n_layer", "value": 0 } },
+                            { "set_notification_message": { "id": "layer", "text": "" } },
+                            { "key_code": "left_control" }
+                          ]
+                        }
+                      ]
+                    },
                     {
                       "description": "Tap quote = quote, Hold quote sets semicolon_layer = 1",
                       "manipulators": [
