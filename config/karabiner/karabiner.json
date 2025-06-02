@@ -137,21 +137,6 @@
                         ]
                     },
                     {
-                        "description": "[ and ] keys => prev/next tab",
-                        "manipulators": [
-                            {
-                                "from": { "key_code": "open_bracket" },
-                                "to": [ { "key_code": "open_bracket", "modifiers": ["left_shift", "left_command"] } ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": { "key_code": "close_bracket" },
-                                "to": [ { "key_code": "close_bracket", "modifiers": ["left_shift", "left_command"] } ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Map e & r to SHIFT + CTRL when held",
                         "manipulators": [
                             {
