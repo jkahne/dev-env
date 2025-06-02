@@ -124,19 +124,6 @@
                       ]
                     },
                     {
-                        "description": "y_layer remaps: wasd = arrows, e & r => prev/next tab",
-                        "manipulators": [
-                            {
-                                "conditions": [ { "name": "y_layer", "type": "variable_if", "value": 1 } ],
-                                "from": { "key_code": "e" }, "to": [ { "key_code": "open_bracket", "modifiers": ["left_shift", "left_command"] } ], "type": "basic"
-                            },
-                            {
-                                "conditions": [ { "name": "y_layer", "type": "variable_if", "value": 1 } ],
-                                "from": { "key_code": "r" }, "to": [ { "key_code": "close_bracket", "modifiers": ["left_shift", "left_command"] } ], "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Map e & r to SHIFT + CTRL when held",
                         "manipulators": [
                             {
