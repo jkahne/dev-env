@@ -123,6 +123,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
     -- @l => yanks whatever is visually selected and puts it into a puts statement
     vim.fn.setreg("l", 'yoputs "' .. esc .. "pa: #{ " .. esc .. 'pa.inspect }"' .. esc .. "bb")
+    vim.fn.setreg("s", 'oputs "⭐️ -------"' .. esc)
   end,
 })
 
