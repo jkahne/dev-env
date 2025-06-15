@@ -125,6 +125,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.fn.setreg("j", 'yoputs "⭐️ ' .. esc .. "pa: #{ JSON.pretty_generate(" .. esc .. 'pa) }"' .. esc)
     vim.fn.setreg("l", 'yoputs "⭐️ ' .. esc .. "pa: #{ " .. esc .. 'pa.inspect }"' .. esc)
     vim.fn.setreg("s", 'oputs "⭐️ -------"' .. esc)
+    vim.fn.setreg("c", "A," .. esc)
   end,
 })
 
