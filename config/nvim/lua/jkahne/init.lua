@@ -122,7 +122,8 @@ vim.api.nvim_create_autocmd("FileType", {
     -- vim.cmd("silent !rubocop -A %")
 
     -- @l => yanks whatever is visually selected and puts it into a puts statement
-    vim.fn.setreg("l", 'yoputs "' .. esc .. "pa: #{ " .. esc .. 'pa.inspect }"' .. esc .. "bb")
+    vim.fn.setreg("j", 'yoputs "⭐️ ' .. esc .. "pa: #{ JSON.pretty_generate(" .. esc .. 'pa) }"' .. esc)
+    vim.fn.setreg("l", 'yoputs "⭐️ ' .. esc .. "pa: #{ " .. esc .. 'pa.inspect }"' .. esc)
     vim.fn.setreg("s", 'oputs "⭐️ -------"' .. esc)
   end,
 })
