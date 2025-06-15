@@ -54,6 +54,11 @@ return {
       -- if set to `nil` then no specific condition is applied
       -- condition = nil,
       condition = function(buf)
+        local filetype = vim.bo[buf].filetype
+        if filetype == "harpoon" then -- or filetype == "mysql" then
+          return false
+        end
+
         local fn = vim.fn
         local utils = require("auto-save.utils.data")
 
