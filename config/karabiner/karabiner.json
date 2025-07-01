@@ -111,16 +111,6 @@
                     ]
                   }
                 ]
-              },
-              {
-                  "description": "Map e & r to SHIFT + CTRL when held",
-                  "manipulators": [
-                      {
-                          "from": { "simultaneous": [ { "key_code": "e" }, { "key_code": "r" } ],
-                              "modifiers": { "optional": ["any"] }, "simultaneous_options": { "detect_key_down_uninterruptedly": true, "key_down_order": "insensitive", "key_up_order": "insensitive" } }, "parameters": { "basic.simultaneous_threshold_milliseconds": 50 },
-                          "to": [ { "key_code": "left_control", "modifiers": ["left_shift"] } ], "type": "basic"
-                      }
-                  ]
               }
           ]
       },
