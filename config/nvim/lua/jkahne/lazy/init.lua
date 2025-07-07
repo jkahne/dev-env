@@ -411,6 +411,10 @@ return {
       require("telescope").setup({
 
         defaults = {
+          -- -- Display path without leading './'
+          -- path_display = function(_, path)
+          --   return path:gsub("^%./", "")
+          -- end,
           mappings = {
             i = {
               -- ["<C-h>"] = "which_key",
