@@ -8,6 +8,8 @@ vim.g.maplocalleader = "\\"
 vim.keymap.set("i", ",,", "<Esc>", { noremap = true })
 vim.keymap.set("v", ",,", "<Esc>", { noremap = true })
 
+vim.keymap.set("t", "<esc><esc>", "<C-\\><c-n>")
+
 vim.keymap.set("n", "go", "o<Esc>", { noremap = false })
 vim.keymap.set("n", "gO", "O<Esc>", { noremap = false })
 vim.keymap.set("n", "gp", "`[v`]", { noremap = true })
@@ -93,10 +95,10 @@ vim.keymap.set("i", "?", "?<C-g>u", { noremap = true })
 
 -- Toggle cursor crosshair
 vim.keymap.set("n", "+", function()
-	-- vim.opt.cursorline = not vim.opt.cursorline
-	-- vim.opt.cursorcolumn = not vim.opt.cursorcolumn
-	-- Halp! i can't even Lua properly
-	vim.cmd([[
+  -- vim.opt.cursorline = not vim.opt.cursorline
+  -- vim.opt.cursorcolumn = not vim.opt.cursorcolumn
+  -- Halp! i can't even Lua properly
+  vim.cmd([[
   set cursorline!
   set cursorcolumn!
   ]])
@@ -140,13 +142,25 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "[P]Move line up in visual
 
 -- Scratch and Vim notes with leader key for quick access
 vim.keymap.set(
-	"n",
-	"<Leader>sn",
-	":tab drop " .. vim.fn.expand("$HOME") .. "/projects/worknotes/00\\ Inbox/scratch.md<CR>",
-	{ noremap = true }
+  "n",
+  "<Leader>sn",
+  ":tab drop " .. vim.fn.expand("$HOME") .. "/projects/worknotes/00\\ Inbox/scratch.md<CR>",
+  { noremap = true }
 )
 
-vim.keymap.set("n", "<leader>vn", ":source $MYVIMRC<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>vn", ":source $MYVIMRC<CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>vn", function()
+  for name, _ in pairs(package.loaded) do
+    if name:match("^jkahne") then
+      package.loaded[name] = nil
+    end
+  end
+  dofile(vim.env.MYVIMRC)
+  vim.notify("🔁 Reloaded config", vim.log.levels.INFO)
+end, { desc = "Reload config" })
+
+-- vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>", { desc = "Execute the current file" })
 
 -- vim.keymap.set(
 --   "n",
@@ -158,8 +172,8 @@ vim.keymap.set("n", "<leader>vn", ":source $MYVIMRC<CR>", { silent = true })
 vim.keymap.set({ "n", "v" }, "<space>", "<Nop>", { silent = true })
 
 vim.api.nvim_create_user_command("W", function()
-	vim.cmd("w !sudo tee % > /dev/null")
-	vim.cmd("edit!")
+  vim.cmd("w !sudo tee % > /dev/null")
+  vim.cmd("edit!")
 end, {})
 
 -- vim.api.nvim_create_autocmd("FileType", {
@@ -171,26 +185,26 @@ end, {})
 -- })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "ruby",
-	callback = function()
-		-- vim.keymap.set('n', '<leader>dr', ':!bundle exec standardrb --fix<CR><CR>', { noremap = true, silent = true, buffer = true })
-		-- vim.keymap.set('n', '<leader>dc', ':!bin/ci<CR><CR>', { noremap = true, silent = true, buffer = true })
-		vim.keymap.set("n", "<leader>dr", function()
-			local current_file = vim.fn.expand("%:p")
-			vim.cmd("!rubocop -a " .. current_file)
-		end, { noremap = true, silent = true, buffer = true })
-	end,
-	group = vim.api.nvim_create_augroup("RubySettings", { clear = true }),
+  pattern = "ruby",
+  callback = function()
+    -- vim.keymap.set('n', '<leader>dr', ':!bundle exec standardrb --fix<CR><CR>', { noremap = true, silent = true, buffer = true })
+    -- vim.keymap.set('n', '<leader>dc', ':!bin/ci<CR><CR>', { noremap = true, silent = true, buffer = true })
+    vim.keymap.set("n", "<leader>dr", function()
+      local current_file = vim.fn.expand("%:p")
+      vim.cmd("!rubocop -a " .. current_file)
+    end, { noremap = true, silent = true, buffer = true })
+  end,
+  group = vim.api.nvim_create_augroup("RubySettings", { clear = true }),
 })
 
 -- Set indentation settings specifically for Lua files
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "lua",
-	callback = function()
-		vim.bo.expandtab = true
-		vim.bo.shiftwidth = 2
-		vim.bo.tabstop = 2
-	end,
+  pattern = "lua",
+  callback = function()
+    vim.bo.expandtab = true
+    vim.bo.shiftwidth = 2
+    vim.bo.tabstop = 2
+  end,
 })
 
 -- -- Check if RuboCop is installed
@@ -211,35 +225,35 @@ vim.api.nvim_create_autocmd("FileType", {
 -- vim.api.nvim_set_keymap('c', '<C-y>', '<C-y>', { noremap = true, silent = true })
 
 function WrapPencil()
-	if vim.o.wrap then
-		vim.cmd("set nowrap")
-	else
-		vim.cmd("set wrap")
-		-- vim.cmd('PencilSoft')
-	end
+  if vim.o.wrap then
+    vim.cmd("set nowrap")
+  else
+    vim.cmd("set wrap")
+    -- vim.cmd('PencilSoft')
+  end
 end
 
 -- Lua function to merge tabs in Neovim
 function MergeTabs()
-	-- Check if only one tab is open
-	if vim.fn.tabpagenr() == 1 then
-		return
-	end
+  -- Check if only one tab is open
+  if vim.fn.tabpagenr() == 1 then
+    return
+  end
 
-	-- Get the current buffer name
-	local bufferName = vim.fn.bufname("%")
+  -- Get the current buffer name
+  local bufferName = vim.fn.bufname("%")
 
-	-- Check if it's the last tab page, then close it and switch to the previous one
-	if vim.fn.tabpagenr("$") == vim.fn.tabpagenr() then
-		vim.cmd("close!")
-	else
-		vim.cmd("close!")
-		vim.cmd("tabprev")
-	end
+  -- Check if it's the last tab page, then close it and switch to the previous one
+  if vim.fn.tabpagenr("$") == vim.fn.tabpagenr() then
+    vim.cmd("close!")
+  else
+    vim.cmd("close!")
+    vim.cmd("tabprev")
+  end
 
-	-- Split the window and load the buffer
-	vim.cmd("split")
-	vim.cmd("buffer " .. bufferName)
+  -- Split the window and load the buffer
+  vim.cmd("split")
+  vim.cmd("buffer " .. bufferName)
 end
 
 -- Mapping the function to a key or calling it in Lua

@@ -4,7 +4,7 @@ font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 
-theme = light:xcodedarkhc,dark:xcodedarkhc
+# theme = light:xcodedarkhc,dark:xcodedarkhc
 
 keybind = ctrl+cmd+h=goto_split:left
 keybind = ctrl+cmd+l=goto_split:right
