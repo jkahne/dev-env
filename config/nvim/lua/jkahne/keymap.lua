@@ -264,6 +264,9 @@ vim.keymap.set("n", "<Leader>>", ":tabnext<CR>", { noremap = false })
 vim.keymap.set("n", "<Leader><", ":tabprevious<CR>", { noremap = false })
 vim.keymap.set("n", "<Leader>T", ":tabnew<CR>", { noremap = false })
 
+vim.keymap.set("n", "<C-t>", ":tabnext<CR>", { noremap = false })
+vim.keymap.set("n", "<C-S-t>", ":tabprevious<CR>", { noremap = false })
+
 -- vim.keymap.set('i', "'", "''<left>", { noremap = true })
 -- vim.keymap.set('i', '"', '""<left>', { noremap = true })
 -- vim.keymap.set('i', "(", "()<left>", { noremap = true })
