@@ -17,7 +17,7 @@ FILE_PATH="$POSTS_DIR/$CURRENT_YEAR/$TIMESTAMP.md"
 # Create file with template content
 cat > "$FILE_PATH" << EOL
 ---
-tags: []
+tags: [comma, separated]
 draft: true
 ---
 EOL
