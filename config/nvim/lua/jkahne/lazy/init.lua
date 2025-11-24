@@ -1,21 +1,4 @@
 return {
-
-  {
-    "stevearc/oil.nvim",
-    opts = {},
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("oil").setup({
-        keymaps = {
-          ["<ESC>"] = "actions.close",
-          ["q"] = "actions.close",
-          ["?"] = "actions.show_help",
-        },
-      })
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    end,
-  },
   {
     "williamboman/mason.nvim",
     dependencies = {
@@ -80,7 +63,7 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
 
-      lspconfig.lua_ls.setup({
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -98,8 +81,9 @@ return {
           },
         },
       })
+      vim.lsp.enable("lua_ls")
 
-      lspconfig.tailwindcss.setup({
+      vim.lsp.config("tailwindcss", {
         capabilities = capabilities,
         settings = {
           tailwindCSS = {
@@ -165,6 +149,7 @@ return {
           },
         },
       })
+      vim.lsp.enable("tailwindcss")
 
       -- local handlers = {
       --   ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -250,7 +235,7 @@ return {
       -- 	}),
       -- }
 
-      lspconfig.ruby_lsp.setup({
+      vim.lsp.config("ruby_lsp", {
         capabilities = capabilities,
         -- cmd = { "~/.asdf/shims/ruby-lsp" },
         -- handlers = handlers,
@@ -293,20 +278,16 @@ return {
         -- 	},
         -- },
       })
+      vim.lsp.enable("ruby_lsp")
 
-      lspconfig.html.setup({
-        capabilities = capabilities,
-      })
-
-      lspconfig.jsonls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.bashls.setup({
-        capabilities = capabilities,
-      })
-      -- lspconfig.yamlls.setup({
-      --   capabilities = capabilities,
-      -- })
+      vim.lsp.config("html", { capabilities = capabilities })
+      vim.lsp.enable("html")
+      vim.lsp.config("jsonls", { capabilities = capabilities })
+      vim.lsp.enable("jsonls")
+      vim.lsp.config("bashls", { capabilities = capabilities })
+      vim.lsp.enable("bashls")
+      -- vim.lsp.config('yamlls', { capabilities = capabilities })
+      -- vim.lsp.enable('yamlls')
 
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 

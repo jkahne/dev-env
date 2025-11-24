@@ -42,7 +42,7 @@ return {
       --
       -- All of these are just the defaults
       --
-      enabled = false, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
+      enabled = true, -- start auto-save when the plugin is loaded (i.e. when your package manager loads it)
       trigger_events = { -- See :h events
         immediate_save = { "BufLeave", "FocusLost" }, -- vim events that trigger an immediate save
         defer_save = { "InsertLeave", "TextChanged" }, -- vim events that trigger a deferred save (saves after `debounce_delay`)
@@ -76,23 +76,23 @@ return {
       debug = false,
     },
   },
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("lualine").setup({
-        sections = {
-          lualine_x = {
-            {
-              require("noice").api.statusline.mode.get,
-              cond = require("noice").api.statusline.mode.has,
-              color = { fg = "#ff9e64" },
-            },
-          },
-        },
-      })
-    end,
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   config = function()
+  --     require("lualine").setup({
+  --       sections = {
+  --         lualine_x = {
+  --           {
+  --             require("noice").api.statusline.mode.get,
+  --             cond = require("noice").api.statusline.mode.has,
+  --             color = { fg = "#ff9e64" },
+  --           },
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
