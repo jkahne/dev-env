@@ -2,16 +2,16 @@ export SHELL=/opt/homebrew/bin/zsh
 export EDITOR=nvim
 export HOMEBIN=$HOME/dev-env/bin/
 export DOTS=$HOME/dev-env/dots/
-export ASDF_DIR=$HOME/.asdf
+# export ASDF_DIR=$HOME/.asdf
+export ASDF_DATA_DIR=$HOME/.asdf
 
-# export KEY='value'
-
+export PATH="$ASDF_DATA_DIR/shims"
 
 # Add commonly used folders to $PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 
 # added for claude code
-export PATH="~/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # If you need to use these commands (from coreutils) with their normal
 # names, you can add a "gnubin" directory to your PATH with:
@@ -60,7 +60,7 @@ export CPPFLAGS="-I/opt/homebrew/opt/libpq/include"
 #       "
 
 # . /opt/homebrew/opt/asdf/libexec/asdf.sh
-. $HOME/.asdf/asdf.sh
+# . $HOME/.asdf/asdf.sh
 
 # append completions to fpath
 # fpath=(${ASDF_DIR}/completions $fpath)
@@ -92,7 +92,7 @@ fi
 
 # consider moving this down if needed.
 # needs to be above `compint`
-fpath=(${ASDF_DIR}/completions $fpath)
+# fpath=(${ASDF_DIR}/completions $fpath)
 
 
 
