@@ -10,6 +10,9 @@ export ASDF_DIR=$HOME/.asdf
 # Add commonly used folders to $PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
+# added for claude code
+export PATH="~/.local/bin:$PATH"
+
 # If you need to use these commands (from coreutils) with their normal
 # names, you can add a "gnubin" directory to your PATH with:
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:$PATH"
