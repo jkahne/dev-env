@@ -5,10 +5,9 @@ export DOTS=$HOME/dev-env/dots/
 # export ASDF_DIR=$HOME/.asdf
 export ASDF_DATA_DIR=$HOME/.asdf
 
-export PATH="$ASDF_DATA_DIR/shims"
 
 # Add commonly used folders to $PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # added for claude code
 export PATH="$HOME/.local/bin:$PATH"
@@ -92,7 +91,7 @@ fi
 
 # consider moving this down if needed.
 # needs to be above `compint`
-# fpath=(${ASDF_DIR}/completions $fpath)
+# fpath=(${ASDF_DATA_DIR}/completions $fpath)
 
 
 
@@ -211,3 +210,6 @@ function gitcc() {
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
