@@ -3,6 +3,8 @@ require("jkahne.keymap")
 require("jkahne.lazy_init")
 
 vim.api.nvim_command('command! CopyFilePath let @+ = expand("%:p")')
+vim.api.nvim_command('command! CopyLocalFilePath let @+ = expand("%:.:p")')
+vim.api.nvim_command('command! CopyFileName let @+ = expand("%:t")')
 
 function HighlightCurrentLine()
   -- Retrieve the current line number
