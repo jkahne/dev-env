@@ -19,8 +19,8 @@ return {
       { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
 
-    config = function()
-      require("lazy").setup()
-    end,
+    -- config = function()
+    --   require("lazy").setup()
+    -- end,
   },
 }

@@ -3,8 +3,9 @@ require("jkahne.keymap")
 require("jkahne.lazy_init")
 
 vim.api.nvim_command('command! CopyFilePath let @+ = expand("%:p")')
-vim.api.nvim_command('command! CopyLocalFilePath let @+ = expand("%:.:p")')
 vim.api.nvim_command('command! CopyFileName let @+ = expand("%:t")')
+vim.api.nvim_command('command! CopyLocalFilePath let @+ = expand("%:.:p")')
+vim.api.nvim_command('command! CopyLocalDirPath let @+ = expand("%:.:h")')
 
 function HighlightCurrentLine()
   -- Retrieve the current line number
@@ -15,20 +16,6 @@ end
 
 vim.api.nvim_set_keymap("n", "<Leader>1", "<cmd>lua HighlightCurrentLine()<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<Leader>2", "<cmd>lua vim.fn.clearmatches()<CR>", { noremap = true, silent = true })
-
--- function OpenMarkdownPreview(url)
---   vim.cmd("silent ! chrome --new-window " .. url)
--- end
-
--- function OpenMarkdownPreview(url)
---   vim.cmd("silent ! open -a Google\\ Chrome -n --args --new-window a:" .. url)
--- end
-
-vim.fn.OpenMarkdownPreview = function(url)
-  -- vim.cmd("silent ! /Applications/Firefox.app/Contents/MacOS/firefox --new-window " .. url)
-  vim.cmd("silent ! /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --new-window " .. url)
-end
-vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
 
 local function auto_highlight_toggle()
   local auto_highlight_group = vim.api.nvim_create_augroup("auto_highlight", { clear = true })
@@ -123,11 +110,17 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     -- vim.cmd("silent !rubocop -A %")
 
-    -- @l => yanks whatever is visually selected and puts it into a puts statement
+    -- puts a comma at the end of the line
+    vim.fn.setreg("c", "A," .. esc .. "j")
+
+    -- @j => yanks whatever is ually selected and puts in into a puts statment for json
     vim.fn.setreg("j", 'yoputs "⭐️ ' .. esc .. "pa: #{ JSON.pretty_generate(" .. esc .. 'pa) }"' .. esc)
+
+    -- @l => yanks whatever is visually selected and puts it into a puts statement
     vim.fn.setreg("l", 'yoputs "⭐️ ' .. esc .. "pa: #{ " .. esc .. 'pa.inspect }"' .. esc)
+
+    -- @s prints this header
     vim.fn.setreg("s", 'oputs "⭐️ -------"' .. esc)
-    vim.fn.setreg("c", "A," .. esc)
   end,
 })
 
@@ -140,3 +133,19 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.fn.setreg("l", "yoconsole.log('" .. esc .. "pa: ', " .. esc .. "pa )" .. esc)
   end,
 })
+
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "qf",
+--   callback = function()
+--     vim.keymapts.set("n", "<leader>dq", function()
+--       local qflist = vim.fn.getqflist()
+--       local idx = vim.fn.line(".")
+--       table.remove(qflist, idx)
+--       vim.fn.setqflist(qflist, "r")
+--       -- optionally move cursor up if at end
+--       if idx > #qflist then
+--         vim.cmd("normal! k")
+--       end
+--     end,
+--   end,
+-- })

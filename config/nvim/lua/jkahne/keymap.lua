@@ -26,6 +26,13 @@ vim.keymap.set("n", "Q", "q", { noremap = false })
 vim.keymap.set("n", "<leader>se", "<cmd>silent !tmux neww sess<CR>", { noremap = false })
 vim.keymap.set("n", "<leader>xx", "<cmd>silent :!bin/rails runner lib/scratchpad.rb<CR>", { noremap = false })
 
+vim.keymap.set(
+  "n",
+  "<leader>ld",
+  "<cmd>silent :call setqflist(filter(getqflist(), {idx -> idx != line('.') - 1}), 'r')<CR>",
+  { noremap = false }
+)
+
 vim.keymap.set("n", "Y", "y$", { noremap = true })
 
 vim.keymap.set("n", "<S-Tab>", "za", { noremap = true })
@@ -58,6 +65,34 @@ vim.keymap.set("n", "<leader>bd", ":bp <bar> bd #<CR>", { noremap = true, silent
 vim.keymap.set("n", "<leader>bo", ":up <bar> %bd <bar> e#<CR>", { noremap = true, silent = true })
 -- Switch between current and last buffer
 vim.keymap.set("n", "<Leader>c", "<C-^><CR>", { noremap = false, silent = true })
+
+vim.keymap.set(
+  "v",
+  "<leader>je",
+  ":!jq -c . | jq -sR .<CR >",
+  { desc = "json escape selection", noremap = false, silent = true }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>je",
+  ":%!jq -c . | jq -sR .<CR >",
+  { desc = "json escape whole buffer", noremap = false, silent = true }
+)
+
+vim.keymap.set(
+  "v",
+  "<leader>ju",
+  ":!jq -r . | jq .<CR >",
+  { desc = "json escape selection", noremap = false, silent = true }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>ju",
+  ":%!jq -r . | jq .<CR >",
+  { desc = "json escape whole buffer", noremap = false, silent = true }
+)
 
 -- don't need these now with the glove80
 -- vim.keymap.set("i", "<C-h>", "<Left>", { noremap = true })
@@ -131,6 +166,7 @@ vim.api.nvim_set_keymap("n", "<leader>fw", ":lua WrapPencil()<CR>", { noremap = 
 -- Clear search highlighting with a leader key
 vim.keymap.set("n", "<Leader><space>", ":noh<CR>", { noremap = true })
 
+vim.keymap.set({ "n", "v", "o" }, "<S-hh>", "0", { noremap = false })
 vim.keymap.set({ "n", "v", "o" }, "<S-h>", "^", { noremap = false })
 vim.keymap.set({ "n", "v", "o" }, "<S-l>", "g_", { noremap = false })
 -- vim.keymap.set({ "n", "v", "o" }, "gh", "^", { noremap = false })
@@ -148,6 +184,7 @@ vim.keymap.set(
   { noremap = true }
 )
 
+-- I have this uncommented on work computer instead of the one below
 -- vim.keymap.set("n", "<leader>vn", ":source $MYVIMRC<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>vn", function()
@@ -294,9 +331,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
--- Easily hit escape in terminal mode.
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-
 -- Open a terminal at the bottom of the screen with a fixed height.
 vim.keymap.set("n", ",st", function()
   vim.cmd.new()
@@ -305,11 +339,3 @@ vim.keymap.set("n", ",st", function()
   vim.wo.winfixheight = true
   vim.cmd.term()
 end)
-
-vim.api.nvim_create_autocmd("User", {
-  pattern = "ObsidianNoteEnter",
-  callback = function(ev)
-    vim.keymap.del("n", "<CR>", { buffer = ev.buf })
-    vim.keymap.set("n", "<leader><CR>", require("obsidian.api").smart_action, { buffer = ev.buf })
-  end,
-})

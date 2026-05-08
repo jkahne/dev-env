@@ -150,23 +150,23 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   command = "set filetype=zsh",
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "ruby",
-  group = vim.api.nvim_create_augroup("RubyLSP", { clear = true }), -- also this is not /needed/ but it's good practice
-  callback = function()
-    vim.lsp.start({
-      name = "standard",
-      -- cmd = { "~/.rbenv/shims/standardrb", "--lsp" },
-      cmd = { "bundle", "exec", "standardrb", "--lsp" },
-    })
-  end,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if client and client:supports_method("textDocument/completion") then
-      vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "ruby",
+--   group = vim.api.nvim_create_augroup("RubyLSP", { clear = true }), -- also this is not /needed/ but it's good practice
+--   callback = function()
+--     vim.lsp.start({
+--       name = "standard",
+--       -- cmd = { "~/.rbenv/shims/standardrb", "--lsp" },
+--       cmd = { "bundle", "exec", "standardrb", "--lsp" },
+--     })
+--   end,
+-- })
+--
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   callback = function(ev)
+--     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+--     if client and client:supports_method("textDocument/completion") then
+--       vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
+--     end
+--   end,
+-- })

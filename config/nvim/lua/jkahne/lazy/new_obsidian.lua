@@ -1,64 +1,64 @@
 return {
-  "obsidian-nvim/obsidian.nvim",
-  version = "*", -- recommended, use latest release instead of latest commit
-  ft = "markdown",
-  -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  -- event = {
-  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-  --   -- refer to `:h file-pattern` for more examples
-  --   "BufReadPre path/to/my-vault/*.md",
-  --   "BufNewFile path/to/my-vault/*.md",
+  -- "obsidian-nvim/obsidian.nvim",
+  -- version = "*", -- recommended, use latest release instead of latest commit
+  -- ft = "markdown",
+  -- -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+  -- -- event = {
+  -- --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  -- --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
+  -- --   -- refer to `:h file-pattern` for more examples
+  -- --   "BufReadPre path/to/my-vault/*.md",
+  -- --   "BufNewFile path/to/my-vault/*.md",
+  -- -- },
+  -- ---@module 'obsidian'
+  -- ---@type obsidian.config
+  -- opts = {
+  --   workspaces = {
+  --     {
+  --       name = "zettle",
+  --       path = "~/projects/zettle",
+  --     },
+  --   },
   -- },
-  ---@module 'obsidian'
-  ---@type obsidian.config
-  opts = {
-    workspaces = {
-      {
-        name = "zettle",
-        path = "~/projects/zettle",
-      },
-    },
-  },
-  init = function()
-    vim.g.vim_markdown_frontmatter = 1
-    vim.wo.conceallevel = 2
-  end,
-  config = function()
-    require("obsidian").setup({
-      workspaces = {
-        {
-          name = "zettle",
-          path = "~/projects/zettle",
-        },
-        -- {
-        -- 	name = "Brain23oey",
-        -- 	path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Brain23eoy/",
-        -- },
-        -- {
-        -- 	name = "worknotes",
-        -- 	path = "~/projects/worknotes",
-        -- 	overrides = {
-        -- 		notes_subdir = "00 Inbox",
-        -- 	},
-        -- },
-      },
-      -- callbacks = {
-      --   enter_note = function(note)
-      --     vim.keymap.set("n", "gd", function()
-      --       require("obsidian.api").nav_link("next")
-      --     end, {
-      --       buffer = note.bufnr,
-      --       desc = "Go to next link",
-      --     })
-      --     vim.keymap.set("n", "<C-o>", function()
-      --       require("obsidian.api").nav_link("prev")
-      --     end, {
-      --       buffer = note.bufnr,
-      --       desc = "Go to previous link",
-      --     })
-      --   end,
-      -- },
-    })
-  end,
+  -- init = function()
+  --   vim.g.vim_markdown_frontmatter = 1
+  --   vim.wo.conceallevel = 2
+  -- end,
+  -- config = function()
+  --   require("obsidian").setup({
+  --     workspaces = {
+  --       {
+  --         name = "zettle",
+  --         path = "~/projects/zettle",
+  --       },
+  --       -- {
+  --       -- 	name = "Brain23oey",
+  --       -- 	path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Brain23eoy/",
+  --       -- },
+  --       -- {
+  --       -- 	name = "worknotes",
+  --       -- 	path = "~/projects/worknotes",
+  --       -- 	overrides = {
+  --       -- 		notes_subdir = "00 Inbox",
+  --       -- 	},
+  --       -- },
+  --     },
+  --     -- callbacks = {
+  --     --   enter_note = function(note)
+  --     --     vim.keymap.set("n", "gd", function()
+  --     --       require("obsidian.api").nav_link("next")
+  --     --     end, {
+  --     --       buffer = note.bufnr,
+  --     --       desc = "Go to next link",
+  --     --     })
+  --     --     vim.keymap.set("n", "<C-o>", function()
+  --     --       require("obsidian.api").nav_link("prev")
+  --     --     end, {
+  --     --       buffer = note.bufnr,
+  --     --       desc = "Go to previous link",
+  --     --     })
+  --     --   end,
+  --     -- },
+  --   })
+  -- end,
 }

@@ -1,33 +1,4 @@
 return {
-  -- {
-  --   "otavioschwanck/arrow.nvim",
-  --   -- dependencies = {
-  --   --   { "nvim-tree/nvim-web-devicons" },
-  --   -- or if using `mini.icons`
-  --   -- { "echasnovski/mini.icons" },
-  --   -- },
-  --   opts = {
-  --     show_icons = true,
-  --     leader_key = ";", -- Recommended to be a single key
-  --     buffer_leader_key = "m", -- Per Buffer Mappings
-  --     always_show_path = true,
-  --     mappings = {
-  --       edit = "e",
-  --       delete_mode = "d",
-  --       clear_all_items = "C",
-  --       toggle = "a",
-  --       open_vertical = "<C-v>",
-  --       open_horizontal = "<C-s>",
-  --       quit = "q",
-  --     },
-  --   },
-  --   -- config = function()
-  --   --   vim.keymap.set("n", "H", require("arrow.persist").previous)
-  --   --   vim.keymap.set("n", "L", require("arrow.persist").next)
-  --   --   vim.keymap.set("n", "<C-s>", require("arrow.persist").toggle)
-  --   -- end,
-  -- },
-
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -62,13 +33,10 @@ return {
       vim.keymap.set("n", "<C-S-u>", function()
         harpoon:list():add()
       end, { desc = "add a file to harpoon" })
+
       vim.keymap.set("n", "<C-S-i>", function()
         harpoon:list():remove()
       end, { desc = "remove a file from harpoon" })
-      -- vim.keymap.set("n", "<C-S-m>", function() toggle_telescope(harpoon:list()) end, { desc = "Open harpoon window" })
-      vim.keymap.set("n", "<C-S-m>", function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end)
 
       vim.keymap.set("n", "<C-S-h>", function()
         harpoon:list():select(1)
@@ -84,12 +52,19 @@ return {
       end, { desc = "open the fourth file in harpoon list" })
       --
       -- -- Toggle previous & next buffers stored within Harpoon list
-      vim.keymap.set("n", "<C-S-P>", function()
+      vim.keymap.set("n", "<C-S-n>", function()
         harpoon:list():prev()
       end, { desc = "open the previous file in harpoon list" })
-      vim.keymap.set("n", "<C-S-N>", function()
+      vim.keymap.set("n", "<C-S-m>", function()
         harpoon:list():next()
       end, { desc = "open the next file in harpoon list" })
+
+      vim.keymap.set("n", "<C-S-t>", function()
+        toggle_telescope(harpoon:list())
+      end, { desc = "Open harpoon window" })
+      vim.keymap.set("n", "<C-S-y>", function()
+        harpoon.ui:toggle_quick_menu(harpoon:list())
+      end)
     end,
   },
 }
