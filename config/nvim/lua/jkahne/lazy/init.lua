@@ -92,6 +92,9 @@ return {
 			vim.lsp.config("yamlls", { capabilities = capabilities })
 			vim.lsp.enable("yamlls")
 
+			-- vim.lsp.config("ruby_lsp", { capabilities = capabilities })
+			-- vim.lsp.enable("ruby_lsp")
+
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, { desc = "signature help" })
 
@@ -348,10 +351,10 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		branch = "main",
 		build = ":TSUpdate",
+		lazy = false,
 		dependencies = {
-			{ "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+			{ "nvim-treesitter/nvim-treesitter-textobjects" },
 		},
 		init = function()
 			vim.api.nvim_create_autocmd("FileType", {
